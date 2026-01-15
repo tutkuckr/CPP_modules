@@ -6,7 +6,7 @@
 #    By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/30 16:44:17 by tcakir-y          #+#    #+#              #
-#    Updated: 2025/09/30 19:52:29 by tcakir-y         ###   ########.fr        #
+#    Updated: 2026/01/15 16:36:39 by tcakir-y         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRC = main.cpp
 OBJECTS = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 
 # Executable name
-NAME = main
+NAME = phonebook
 
 # Default rule: builds philo
 all: $(NAME)
