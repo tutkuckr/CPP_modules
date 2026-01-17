@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 19:04:51 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/01/17 23:22:48 by tutku            ###   ########.fr       */
+/*   Created: 2026/01/17 00:52:22 by tutku             #+#    #+#             */
+/*   Updated: 2026/01/17 23:50:40 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONE_BOOK_HPP
-#define PHONE_BOOK_HPP
+#ifndef CONTACT_HPP
+#define CONTACT_HPP
 
-#include "Contact.hpp"
 #include <string>
+#include <iostream>
 
-/*
-* array of contacts
-* max 8 contacts, delete oldest one and replace with new one. if you add more
-* no dynamic allocation
-*/
-
-class PhoneBook {
+class Contact
+{
 	private:
-		Contact	contact[8];
-		int		index;
-		int		total_contacts;
-
+		std::string	firstName;
+		std::string lastName;
+		std::string	nickname;
+		std::string	phoneNum;
+		std::string	darkestSecret;
 	public:
-		PhoneBook();
-		void	search();
-		void	add();
-		void	exit();
-		void	printContacts();
-		int		get_index();
+		Contact();
+		void		add_contact();
+		std::string	getFirstName();
+		std::string	getLastName();
+		std::string	getNickname();
+		std::string	getPhoneNumber();
+		std::string	getDarkestSecret();
 };
-
 #endif
-

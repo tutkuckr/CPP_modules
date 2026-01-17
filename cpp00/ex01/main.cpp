@@ -3,41 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:25:47 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/01/15 16:41:03 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/01/17 22:39:54 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Contact.hpp"
 #include "PhoneBook.hpp"
-
-void PhoneBook::add()
-{
-	std::cout << "will add it!";
-}
+#include <string>
+#include <iostream>
 
 int	main(void)
 {
-	std::string input;
-	PhoneBook test;
+	std::string	input;
+	PhoneBook	phoneBook;
 
-	std::cout << "Enter one of the following commands:\n1.ADD\n2.SEARCH\n3.EXIT\n";
-	std::cin >> input;
-	while (input.compare("EXIT") != 0)
+	while (1)
 	{
-		if (input.compare("ADD"))
+		std::getline(std::cin, input);
+		if (input == "EXIT")
+			break;
+		else if (input == "ADD")
 		{
-			test.add();
+			phoneBook.add();
 		}
-		else if (input.compare("SEARCH"))
+		else if (input == "SEARCH")
 		{
-			test.search();
+			phoneBook.search();
 		}
-		std::cout << "Enter one of the following commands:\n1.ADD\n2.SEARCH\n3.EXIT\n";
-		std::cin >> input;
+		else
+		{
+			std::cout << "Allowed inputs are\n1.ADD\n2.SEARCH\n3.EXIT\n";
+		}
+		std::cout << "Enter one of the following commands:\n1.ADD\n2.SEARCH\n3.EXIT\n\n";
 	}
-	std::cout << "Exited\n";
+	std::cout << "Contacts are deleted!\nExited\n";
 	return (0);
 }
 

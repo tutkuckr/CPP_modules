@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+         #
+#    By: tutku <tutku@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/30 16:44:17 by tcakir-y          #+#    #+#              #
-#    Updated: 2026/01/15 16:36:39 by tcakir-y         ###   ########.fr        #
+#    Updated: 2026/01/17 16:03:21 by tutku            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ CXXFLAGS = -Wall -Werror -Wextra
 OBJ_DIR = obj
 
 # Source files
-SRC = main.cpp
+SRC =	main.cpp\
+		PhoneBook.cpp\
+		Contact.cpp
 
 # Convert source file name into object file path inside obj/
 OBJECTS = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
@@ -28,7 +30,7 @@ OBJECTS = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 # Executable name
 NAME = phonebook
 
-# Default rule: builds philo
+# Default rule: builds executable
 all: $(NAME)
 
 # Rule to compile .cpp files into .o files in obj/

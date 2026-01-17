@@ -1,0 +1,50 @@
+What to know?
+
+*private → data (state) + internal helpers
+*public → behavior (what the object can do)
+****“If I don’t want random code to mess with this directly, it’s private.”*****
+
+
+👉 Public data = no control, no validation, fragile code
+
+Make something public if:
+✅ Outside code needs to use it
+✅ It represents behavior, not raw data
+✅ You are okay with it being part of the class’s “API”
+--example:
+	void drive();
+	void printInfo() const;
+	int getYear() const;
+
+
+Make something private if:
+🔒 It represents internal state
+🔒 It must stay consistent
+🔒 External code should not control it directly
+--example:
+	int year;
+	string brand;
+	void calculateFuelEfficiency();
+
+
+--example:
+class Car {
+private:
+    // data first
+    string brand;
+    string model;
+    int year;
+
+public:
+    // then behavior
+    Car(...);
+    void drive();
+    void print() const;
+    int getYear() const;
+};
+📌 Default to private. Promote to public only when needed.
+
+Data → private
+Behavior → public
+Public = promises
+Private = freedom to change implementation
