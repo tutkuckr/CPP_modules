@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+         #
+#    By: tutku <tutku@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/30 16:44:17 by tcakir-y          #+#    #+#              #
-#    Updated: 2025/09/30 16:59:38 by tcakir-y         ###   ########.fr        #
+#    Updated: 2026/01/17 00:34:54 by tutku            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ OBJECTS = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 # Executable name
 NAME = megaphone
 
-# Default rule: builds philo
+# Default rule: builds executable
 all: $(NAME)
 
 # Rule to compile .cpp files into .o files in obj/

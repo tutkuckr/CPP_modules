@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 19:04:51 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/01/17 23:22:48 by tutku            ###   ########.fr       */
+/*   Updated: 2026/01/24 17:10:36 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class PhoneBook {
 		void	add();
 		void	exit();
 		void	printContacts();
+		void	printContactInfo(int index);
 		int		get_index();
 };
 

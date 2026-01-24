@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 00:52:22 by tutku             #+#    #+#             */
-/*   Updated: 2026/01/17 23:50:40 by tutku            ###   ########.fr       */
+/*   Updated: 2026/01/24 17:42:38 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,10 @@ class Contact
 		std::string	getNickname();
 		std::string	getPhoneNumber();
 		std::string	getDarkestSecret();
+		void		setFirstName(std::string message);
+		void		setLastName(std::string message);
+		void		setNickname(std::string message);
+		void		setPhoneNumber(std::string message);
+		void		setDarkestSecret(std::string message);
 };
 #endif

@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 01:40:52 by tutku             #+#    #+#             */
-/*   Updated: 2026/01/17 23:55:23 by tutku            ###   ########.fr       */
+/*   Updated: 2026/01/24 17:43:48 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ PhoneBook::PhoneBook()
 
 void PhoneBook::add(void)
 {
-	std::string input;
-	int contactIndex;
-
+	std::string	input;
+	int			contactIndex;
 	std::cout << "Adding new contact\n";
 	contactIndex = index % 8;
 	contact[contactIndex].add_contact();
 	if (total_contacts != 8)
 		total_contacts++;
 	contactIndex++;
+	index++;
 }
 
 std::string shortenStr(std::string str)
@@ -54,13 +54,22 @@ void PhoneBook::printContacts(void)
 			  << std::endl;
 	while(i < total_contacts)
 	{
-		std::cout << "|" << std::setw(10) << std::right << (index + 1)
+		std::cout << "|" << std::setw(10) << std::right << (i + 1)
 				  << "|" << std::setw(10) << std::right << shortenStr(contact[i].getFirstName())
 				  << "|" << std::setw(10) << std::right << shortenStr(contact[i].getLastName())
 				  << "|" << std::setw(10) << std::right << shortenStr(contact[i].getNickname())
 				  << std::endl;
 		i++;
 	}
+}
+
+void PhoneBook::printContactInfo(int index)
+{
+	std::cout << "First name: " << contact[index].getFirstName() << std::endl;
+	std::cout << "Last name: " << contact[index].getLastName() << std::endl;
+	std::cout << "Nickname: " << contact[index].getNickname() << std::endl;
+	std::cout << "Phone number: " << contact[index].getPhoneNumber() << std::endl;
+	std::cout << "Darkest secret: " << contact[index].getDarkestSecret() << std::endl;
 }
 
 int PhoneBook::get_index()
@@ -71,9 +80,9 @@ int PhoneBook::get_index()
 	while (1)
 	{
 		std::getline(std::cin, index);
-		if (index.size() != 1 || !((index[0] - '0') > 0 && (index[0] - '0') <= 8))
+		if (index.size() != 1 || !((index[0] - '0') > 0 && (index[0] - '0') <= total_contacts))
 		{
-			std::cout << "Index should be between 1-8\n";
+			std::cout << "Digit is out of range!" << std::endl;
 			continue;
 		}
 		if ((index[0] - '0') > total_contacts)
@@ -93,7 +102,7 @@ void PhoneBook::search()
 	{
 		printContacts();
 		index = get_index() - 1;
-		//TODO: print chosen contact informations
+		printContactInfo(index);
 	}
 	else
 	{
