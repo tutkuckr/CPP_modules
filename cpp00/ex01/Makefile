@@ -6,7 +6,7 @@
 #    By: tutku <tutku@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/30 16:44:17 by tcakir-y          #+#    #+#              #
-#    Updated: 2026/01/17 16:03:21 by tutku            ###   ########.fr        #
+#    Updated: 2026/01/24 17:49:06 by tutku            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 CXX = g++
 
 # Compiler flags
-CXXFLAGS = -Wall -Werror -Wextra
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 # Directories
 OBJ_DIR = obj
