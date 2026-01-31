@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:25:47 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/01/17 22:39:54 by tutku            ###   ########.fr       */
+/*   Updated: 2026/02/01 00:11:46 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	main(void)
 
 	while (1)
 	{
-		std::getline(std::cin, input);
+		if (!std::getline(std::cin, input)) 
+			break;
 		if (input == "EXIT")
 			break;
 		else if (input == "ADD")
