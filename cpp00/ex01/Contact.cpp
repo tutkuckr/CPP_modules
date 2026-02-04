@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.cpp                                        :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 01:37:36 by tutku             #+#    #+#             */
-/*   Updated: 2026/01/24 17:39:26 by tutku            ###   ########.fr       */
+/*   Updated: 2026/02/04 12:01:44 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ std::string get_input(std::string msg)
 
 	while (1)
 	{
-		std::getline(std::cin, input);
+		if (!std::getline(std::cin, input))
+			break;
 		if (input == "")
 			std::cout << "Please enter a value!\n" << msg;
 		else

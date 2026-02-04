@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 01:40:52 by tutku             #+#    #+#             */
-/*   Updated: 2026/01/24 17:43:48 by tutku            ###   ########.fr       */
+/*   Updated: 2026/02/04 12:02:03 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ int PhoneBook::get_index()
 	std::cout << "Please enter the index\n";
 	while (1)
 	{
-		std::getline(std::cin, index);
+		if (!std::getline(std::cin, index))
+			break;
 		if (index.size() != 1 || !((index[0] - '0') > 0 && (index[0] - '0') <= total_contacts))
 		{
 			std::cout << "Digit is out of range!" << std::endl;
