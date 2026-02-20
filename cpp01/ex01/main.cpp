@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/27 16:38:13 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/02/20 10:37:30 by tutku            ###   ########.fr       */
+/*   Created: 2026/01/27 16:37:41 by tcakir-y          #+#    #+#             */
+/*   Updated: 2026/02/20 10:36:19 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie::Zombie(std::string name)
+int	main()
 {
-	this->name = name;
-}
+	int			zombieAmount = 5;
+	std::string	zombieName = "nup";
+	int			i = 0;
+	Zombie		*hoardZombie = zombieHorde(zombieAmount, zombieName);
 
-Zombie::~Zombie()
-{
-	std::cout << "Zombie -> " << name << " is destroyed" << std::endl;
-}
+	while (i < zombieAmount)
+	{
+		hoardZombie[i].announce();
+		i++;
+	}
 
-void Zombie::announce(void)
-{
-	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	delete[] hoardZombie;
+	return (0);
 }
