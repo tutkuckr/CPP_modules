@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   newZombie.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 16:38:08 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/01/27 17:51:07 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/02/20 09:57:46 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie* newZombie (std::string name)
+// Allocates a Zombie on the heap
+Zombie *newZombie(std::string name)
 {
-	Zombie *zombie;
-
-	zombie->setName()
+	Zombie *heapZombie = new Zombie(name);
+	return (heapZombie);
 }

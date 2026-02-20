@@ -3,38 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 16:37:41 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/01/27 18:05:07 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/02/20 10:00:48 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie*	newZombie( std::string name);
-void	randomChump( std::string name);
-
-Zombie*	newZombie( std::string name)
-{
-	Zombie zombie;
-
-	zombie.setName("New Zombie");
-	return (&zombie);
-}
-
-void	randomChump( std::string name)
-{
-	
-}
-
 int	main()
 {
-	Zombie *zombie;
+	Zombie *heapZombie = newZombie("HeapZombiee");
+	heapZombie->announce();
 
-	zombie = newZombie("Fooo");
+	randomChump("StackZombie");
 
-
-
+	delete heapZombie;
 	return (0);
 }
+
+/*
+	stackZombie is destroyed first,
+	when randomChump function ends, stack object is destroyed automatically
+	
+	heapZombie lives until delete!
+*/
