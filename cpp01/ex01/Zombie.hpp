@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 16:37:38 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/02/20 10:29:51 by tutku            ###   ########.fr       */
+/*   Updated: 2026/02/21 13:23:51 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ class Zombie
 		void	setName(std::string name);
 };
 
-Zombie	*newZombie(std::string name);
 Zombie *zombieHorde(int N, std::string name);
 
 #endif
