@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 18:54:10 by tutku             #+#    #+#             */
-/*   Updated: 2026/02/23 20:21:16 by tutku            ###   ########.fr       */
+/*   Updated: 2026/02/23 20:40:59 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,20 +81,20 @@ int main(int argc, char *argv[])
 
 /*
 			TEST CASES
-	./ex04 test1.txt hello hi
-	./ex04 test2.txt aaa X
-	./ex04 test3.txt aa b
-	./ex04 test4.txt xyz 123		//s1 not found
-	./ex04 test5.txt remove ""		//deletion
-	./ex04 test6.txt world earth
-	./ex04 test7.txt a b
-	./ex04 test8.txt match replaced
-	./ex04 test9.txt a X
-	./ex04 test10.txt abc abcX
-	./ex04 test11.txt "\n" REPLACED
-	./ex04 test12.txt $'\n' X
-	./ex04 test13.txt abc xyz		//large size
-	./ex04 test14.txt same same		//s1==s2
+	./ex04 "tests/test1.txt" hello hi
+	./ex04 "tests/test2.txt" aaa X
+	./ex04 "tests/test3.txt" aa b
+	./ex04 "tests/test4.txt" xyz 123		//s1 not found
+	./ex04 "tests/test5.txt" remove ""		//deletion
+	./ex04 "tests/test6.txt" world earth
+	./ex04 "tests/test7.txt" a b
+	./ex04 "tests/test8.txt" match replaced
+	./ex04 "tests/test9.txt" a X
+	./ex04 "tests/test10.txt" abc abcX
+	./ex04 "tests/test11.txt" "\n" REPLACED
+	./ex04 "tests/test12.txt" $'\n' X
+	./ex04 "tests/test13.txt" abc xyz		//large size
+	./ex04 "tests/test14.txt" same same		//s1==s2
 
 
 	add a line without newline:
