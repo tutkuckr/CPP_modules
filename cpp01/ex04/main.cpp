@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 18:54:10 by tutku             #+#    #+#             */
-/*   Updated: 2026/02/23 20:40:59 by tutku            ###   ########.fr       */
+/*   Updated: 2026/02/23 20:43:25 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,6 @@
 //move currPos str1.len() + found forward
 //when out of the loop copy the rest
 //add a new line
-// void replaceFile(std::ifstream &file, std::ofstream &fileReplace, char **argv)
-// {
-// 	std::string line;
-// 	size_t found;
-// 	size_t currPos;
-// 	std::string str1 = argv[2];
-// 	std::string str2 = argv[3];
-
-// 	while (std::getline(file, line)) 
-// 	{
-// 		currPos = 0;
-// 		found = line.find(str1, currPos);
-// 		while (found != std::string::npos)
-// 		{
-// 			fileReplace << line.substr(currPos, found - currPos);
-// 			fileReplace<< str2;
-// 			currPos = found + str1.length();
-// 			found = line.find(str1, currPos);
-// 		}
-// 		fileReplace << line.substr(currPos) << "\n";
-// 	}
-// }
-
 void replaceFile(std::ifstream &file, std::ofstream &fileReplace, char **argv)
 {
 	char c;
