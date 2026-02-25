@@ -6,7 +6,7 @@
 #    By: tutku <tutku@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/30 16:44:17 by tcakir-y          #+#    #+#              #
-#    Updated: 2026/02/25 16:50:31 by tutku            ###   ########.fr        #
+#    Updated: 2026/02/25 16:50:38 by tutku            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRC =	main.cpp\
 OBJECTS = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 
 # Executable name
-NAME = harl
+NAME = harlFilter
 
 # Default rule: builds executable
 all: $(NAME)
