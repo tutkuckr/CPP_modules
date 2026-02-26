@@ -6,15 +6,15 @@
 #    By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/30 16:44:17 by tcakir-y          #+#    #+#              #
-#    Updated: 2026/01/27 18:51:31 by tcakir-y         ###   ########.fr        #
+#    Updated: 2026/02/26 14:29:27 by tcakir-y         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler
-CXX = g++
+CXX = c++
 
 # Compiler flags
-CXXFLAGS = -Wall -Werror -Wextra
+CXXFLAGS = -Wall -Werror -Wextra -std=c++20
 
 # Directories
 OBJ_DIR = obj
