@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tutku <tutku@student.42.fr>                +#+  +:+       +#+         #
+#    By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/25 17:54:45 by tutku             #+#    #+#              #
-#    Updated: 2026/02/25 18:02:08 by tutku            ###   ########.fr        #
+#    Updated: 2026/02/26 14:29:58 by tcakir-y         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler
-CXX = g++
+CXX = c++
 
 # Compiler flags
-CXXFLAGS = -Wall -Werror -Wextra
+CXXFLAGS = -Wall -Werror -Wextra -std=c++20
 
 # Directories
 OBJ_DIR = obj
