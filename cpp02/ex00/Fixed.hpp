@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 17:54:40 by tutku             #+#    #+#             */
-/*   Updated: 2026/02/26 15:44:30 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/03/04 14:54:49 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@
 class Fixed
 {
 	private:
-		int fixedPoint;
-		static const int fixed = 8;
-		
+		int					fixedPoint;
+		static const int	fixed = 8;
 
 	public:
 		Fixed();								//constructor
 		Fixed(const Fixed &other);				//copy constructor
-		Fixed &operator=(const Fixed& other);	//copy assignment operator
+		Fixed& operator=(const Fixed& other);	//copy assignment operator
 		~Fixed();								// destructor
 		int getRawBits(void) const;
+		void setRawBits(int const raw);
 };
 #endif
 
