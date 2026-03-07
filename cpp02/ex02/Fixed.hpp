@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 17:54:40 by tutku             #+#    #+#             */
-/*   Updated: 2026/03/07 20:54:03 by tutku            ###   ########.fr       */
+/*   Updated: 2026/03/07 21:47:54 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,25 @@ class Fixed
 		Fixed(const int raw);					//int to fixed point
 		Fixed(const float raw);					//float to fixed point
 		Fixed(const Fixed &other);				//copy constructor
-		Fixed& operator=(const Fixed& other);	//copy assignment operator
-		Fixed& operator>(const Fixed& other);
-		Fixed& operator<(const Fixed& other);
-		Fixed& operator>=(const Fixed& other);
-		Fixed& operator<=(const Fixed& other);
-		Fixed& operator==(const Fixed& other);
-		Fixed& operator!=(const Fixed& other);
-		Fixed operator+(const Fixed& other);
-		Fixed operator-(const Fixed& other);
-		Fixed operator*(const Fixed& other);
-		Fixed operator/(const Fixed& other);
-		Fixed& operator++();					//prefix -> ++a
+		Fixed &operator=(const Fixed &other);	// copy assignment operator
+		//ARITHMETIC OPERATORS
+		Fixed operator+(const Fixed &other);
+		Fixed operator-(const Fixed &other);
+		Fixed operator*(const Fixed &other);
+		Fixed operator/(const Fixed &other);
+		//COMPARISON OPERATORS
+		bool operator>(const Fixed &other) const;
+		bool operator<(const Fixed &other) const;
+		bool operator>=(const Fixed &other) const;
+		bool operator<=(const Fixed &other) const;
+		bool operator==(const Fixed &other) const;
+		bool operator!=(const Fixed &other) const;
+		//PREFIX POSTFIX 
+		Fixed &operator++();					//prefix -> ++a
 		Fixed operator++(int);					//postfix -> a++
-		Fixed& operator--();
+		Fixed &operator--();
 		Fixed operator--(int);
+
 		~Fixed(); // destructor
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
@@ -49,12 +53,10 @@ class Fixed
 		void	convertToFixed(const float raw);
 		float	toFloat(void) const;
 		int		toInt(void ) const;
-		static int& min(int& fixed1, int& fixed2);
-		static int& min(const int& fixed1, const int& fixed2);
-		static int& max(int& fixed1, int& fixed2);
-		static int& max(const int& fixed1, const int& fixed2);
-
-
+		static Fixed &min(Fixed &fixed1, Fixed &fixed2);
+		static const Fixed &min(const Fixed &fixed1, const Fixed &fixed2);
+		static Fixed &max(Fixed &fixed1, Fixed &fixed2);
+		static const Fixed &max(const Fixed &fixed1, const Fixed &fixed2);
 };
 
 std::ostream& operator<<(std::ostream& os, const Fixed& other);

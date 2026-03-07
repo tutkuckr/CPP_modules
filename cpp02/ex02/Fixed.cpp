@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 17:54:35 by tutku             #+#    #+#             */
-/*   Updated: 2026/03/07 20:59:31 by tutku            ###   ########.fr       */
+/*   Updated: 2026/03/07 21:47:21 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,74 @@ Fixed Fixed::operator--(int)
 	return (temp);
 }
 
-static int &min(int &fixed1, int &fixed2);
-static int &min(const int &fixed1, const int &fixed2);
-static int &max(int &fixed1, int &fixed2);
-static int &max(const int &fixed1, const int &fixed2);
+// ============ comparison operators ============
+bool Fixed::operator>(const Fixed &other) const
+{
+	if (fixedPoint > other.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool Fixed::operator<(const Fixed &other) const
+{
+	if (fixedPoint < other.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool Fixed::operator>=(const Fixed &other) const
+{
+	if (fixedPoint >= other.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool Fixed::operator<=(const Fixed &other) const
+{
+	if (fixedPoint <= other.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool Fixed::operator==(const Fixed &other) const 
+{
+	if (fixedPoint == other.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool Fixed::operator!=(const Fixed &other) const
+{
+	if (fixedPoint != other.getRawBits())
+		return (true);
+	return (false);
+}
+
+// ============ min,max ============
+// only static member functions can be called without an object
+
+Fixed &Fixed::min(Fixed &fixed1, Fixed &fixed2)
+{
+	if (fixed1.getRawBits() < fixed2.getRawBits())
+		return (fixed1);
+	return (fixed2);
+}
+
+const Fixed &Fixed::min(const Fixed &fixed1, const Fixed &fixed2)
+{
+	if (fixed1.getRawBits() < fixed2.getRawBits())
+		return (fixed1);
+	return (fixed2);
+}
+Fixed &Fixed::max(Fixed &fixed1, Fixed &fixed2)
+{
+	if (fixed1.getRawBits() > fixed2.getRawBits())
+		return (fixed1);
+	return (fixed2);
+}
+const Fixed &Fixed::max(const Fixed &fixed1, const Fixed &fixed2)
+{
+	if (fixed1.getRawBits() > fixed2.getRawBits())
+		return (fixed1);
+	return (fixed2);
+}
