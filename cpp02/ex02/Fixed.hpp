@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 17:54:40 by tutku             #+#    #+#             */
-/*   Updated: 2026/03/04 18:37:09 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/03/07 20:54:03 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,15 @@ class Fixed
 		Fixed& operator<=(const Fixed& other);
 		Fixed& operator==(const Fixed& other);
 		Fixed& operator!=(const Fixed& other);
-		Fixed& operator+(const Fixed& other);
-		Fixed& operator-(const Fixed& other);
-		Fixed& operator*(const Fixed& other);
-		Fixed& operator/(const Fixed& other);
-		~Fixed();								// destructor
+		Fixed operator+(const Fixed& other);
+		Fixed operator-(const Fixed& other);
+		Fixed operator*(const Fixed& other);
+		Fixed operator/(const Fixed& other);
+		Fixed& operator++();					//prefix -> ++a
+		Fixed operator++(int);					//postfix -> a++
+		Fixed& operator--();
+		Fixed operator--(int);
+		~Fixed(); // destructor
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
 		void	convertToFixed(const int raw);
