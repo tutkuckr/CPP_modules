@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 23:28:41 by tutku             #+#    #+#             */
-/*   Updated: 2026/03/09 04:06:07 by tutku            ###   ########.fr       */
+/*   Updated: 2026/03/09 16:33:04 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ Point::Point(const Point &other):x(other.x), y(other.y)
 Point::Point(const float x, const float y): x(x), y(y)
 {
 
+}
+
+Point &Point::operator=(const Point &other)
+{
+	(void)other;
+	return (*this);
 }
 
 const Fixed Point::getPoint(char axis) const

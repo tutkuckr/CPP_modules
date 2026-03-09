@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 23:28:49 by tutku             #+#    #+#             */
-/*   Updated: 2026/03/09 04:09:55 by tutku            ###   ########.fr       */
+/*   Updated: 2026/03/09 16:32:33 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Point
 		Point();								//default constructor
 		Point(const Point &other);				//copy constructor
 		Point(const float x, const float y);
+		Point &operator=(const Point &other);	//operator overload
 		~Point();								//destructor
 		const Fixed getPoint(char axis) const;
 };
