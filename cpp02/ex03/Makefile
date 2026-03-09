@@ -6,7 +6,7 @@
 #    By: tutku <tutku@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/25 17:54:45 by tutku             #+#    #+#              #
-#    Updated: 2026/03/07 23:28:00 by tutku            ###   ########.fr        #
+#    Updated: 2026/03/09 04:02:52 by tutku            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,9 @@ OBJ_DIR = obj
 
 # Source files
 SRC =	main.cpp\
-		Fixed.cpp
+		Fixed.cpp\
+		bsp.cpp\
+		Point.cpp
 
 # Convert source file name into object file path inside obj/
 OBJECTS = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
