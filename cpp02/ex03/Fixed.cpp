@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 17:54:35 by tutku             #+#    #+#             */
-/*   Updated: 2026/03/09 04:07:45 by tutku            ###   ########.fr       */
+/*   Updated: 2026/03/11 10:55:04 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ Fixed::~Fixed()
 
 int Fixed::getRawBits(void) const
 {
-	return (fixedPoint); //check this one
+	return (fixedPoint);
 }
 
 void Fixed::setRawBits(int const raw)
@@ -158,6 +158,7 @@ Fixed Fixed::operator--(int)
 }
 
 // ============ comparison operators ============
+
 bool Fixed::operator>(const Fixed &other) const
 {
 	if (fixedPoint > other.getRawBits())
@@ -216,12 +217,14 @@ const Fixed &Fixed::min(const Fixed &fixed1, const Fixed &fixed2)
 		return (fixed1);
 	return (fixed2);
 }
+
 Fixed &Fixed::max(Fixed &fixed1, Fixed &fixed2)
 {
 	if (fixed1.getRawBits() > fixed2.getRawBits())
 		return (fixed1);
 	return (fixed2);
 }
+
 const Fixed &Fixed::max(const Fixed &fixed1, const Fixed &fixed2)
 {
 	if (fixed1.getRawBits() > fixed2.getRawBits())

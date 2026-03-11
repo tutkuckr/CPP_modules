@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 17:54:35 by tutku             #+#    #+#             */
-/*   Updated: 2026/03/11 10:30:11 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/03/11 10:53:32 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ Fixed::~Fixed()
 int Fixed::getRawBits(void) const
 {
 	//std::cout << "getRawBits member function called" << std::endl;
-	return (fixedPoint); //check this one
+	return (fixedPoint);
 }
 
 void Fixed::setRawBits(int const raw)

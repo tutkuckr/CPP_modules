@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bsp.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 23:28:26 by tutku             #+#    #+#             */
-/*   Updated: 2026/03/09 04:02:22 by tutku            ###   ########.fr       */
+/*   Updated: 2026/03/11 10:55:37 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Fixed checkSides(Point const point, Point const point1, Point const point2)
 }
 
 /*
-	a, b, c: The vertices of our beloved triangle.
+	a, b, c: The vertices of the triangle.
 	point: The point to check.
 	Returns: True if the point is inside the triangle. False otherwise.
 	Thus, if the point is a vertex or on an edge, it will return False.
