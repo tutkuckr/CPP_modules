@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+         #
+#    By: tutku <tutku@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/25 17:54:45 by tutku             #+#    #+#              #
-#    Updated: 2026/03/11 11:23:43 by tcakir-y         ###   ########.fr        #
+#    Updated: 2026/03/13 04:05:03 by tutku            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRC =	main.cpp\
 OBJECTS = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 
 # Executable name
-NAME = ex03
+NAME = ex00
 
 # Default rule: builds executable
 all: $(NAME)
