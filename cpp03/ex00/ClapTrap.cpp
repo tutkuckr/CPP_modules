@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 11:25:04 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/03/13 04:20:26 by tutku            ###   ########.fr       */
+/*   Updated: 2026/03/19 06:04:12 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,52 +61,52 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 
 void ClapTrap::attack(const std::string &target)
 {
-	if (energyPts > 0 && hitPts > 0)
-	{	
-		std::cout << "ClapTrap " << name << " attacks " 
-				<< target << ", causing " << attackDmg << " points of damage!" << std::endl;
-		energyPts--;
-		std::cout << "ClapTrap " << name << " has " << energyPts << " energy points left!" << std::endl;
-	}
 	if (energyPts == 0)
 	{
 		std::cout << "ClapTrap " << name << " is out of energy points!" << std::endl;
 	}
 	else if (hitPts == 0)
 		std::cout << "ClapTrap " << name << " is dead!" << std::endl;
+	else
+	{
+		std::cout << "ClapTrap " << name << " attacks "
+				  << target << ", causing " << attackDmg << " points of damage!" << std::endl;
+		energyPts--;
+		std::cout << "ClapTrap " << name << " has " << energyPts << " energy points left!" << std::endl;
+	}
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	if (hitPts <= 0)
+	if (hitPts == 0)
 	{
 		std::cout << "ClapTrap " << name << " is out of hit points" << std::endl;
 		return;
 	}
 	std::cout << "ClapTrap " << name << " took " << amount << " points of damage!" << std::endl;
-	hitPts -= amount;
-	if (hitPts < 0)
+	if (amount >= hitPts)
 		hitPts = 0;
+	else
+		hitPts -= amount;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (hitPts <= 0)
+	if (hitPts == 0)
 	{
 		std::cout << "ClapTrap " << name << " is out of hit points!" << std::endl;
 		return;
 	}
-	if (energyPts > 0 && hitPts != 0)
-	{
-		std::cout << "ClapTrap " << name <<
-			" healed " << amount << " points!" << std::endl;
-		energyPts--;
-		std::cout << "ClapTrap " << name << " has " << energyPts << " energy points left!" << std::endl;
-		hitPts += amount;
-	}
 	if (energyPts == 0)
 	{
 		std::cout << "ClapTrap " << name << " is out of energy points!" << std::endl;
+	}
+	else
+	{
+		std::cout << "ClapTrap " << name << " healed " << amount << " points!" << std::endl;
+		energyPts--;
+		std::cout << "ClapTrap " << name << " has " << energyPts << " energy points left!" << std::endl;
+		hitPts += amount;
 	}
 }
 
@@ -115,12 +115,12 @@ const std::string &ClapTrap::getName() const
 	return (name);
 }
 
-const int &ClapTrap::getHitPts() const
+const unsigned int &ClapTrap::getHitPts() const
 {
 	return (hitPts);
 }
 
-const int &ClapTrap::getEnergyPtr() const
+const unsigned int &ClapTrap::getEnergyPts() const
 {
 	return (energyPts);
 }
