@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 11:25:04 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/03/19 06:04:12 by tutku            ###   ########.fr       */
+/*   Updated: 2026/03/20 20:32:38 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 		hitPts = 0;
 	else
 		hitPts -= amount;
+	std::cout << "ClapTrap " << name << " has " << hitPts << " hit points left!" << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
