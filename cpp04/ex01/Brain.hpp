@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/22 17:14:04 by tutku             #+#    #+#             */
-/*   Updated: 2026/03/22 22:01:05 by tutku            ###   ########.fr       */
+/*   Created: 2026/03/22 21:19:35 by tutku             #+#    #+#             */
+/*   Updated: 2026/03/22 21:48:57 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+#include <iostream>
 
-class Dog : public Animal
+class Brain
 {
 	private:
-		Brain *brain;
+		std::string ideas[100];
 
+	protected:
+	
 	public:
-		Dog();
-		Dog(std::string type);
-		Dog(const Dog &other);
-		Dog &operator=(const Dog &other);
-		~Dog();
+		Brain();
+		Brain(std::string ideas);
+		Brain(const Brain &other);
+		Brain &operator=(const Brain &other);
+		~Brain();
 
-		void makeSound() const override;
-		void setIdea(int index, const std::string &idea);
 		std::string getIdea(int index) const;
+		void setIdea(int index, const std::string &idea);
 };
 
 #endif

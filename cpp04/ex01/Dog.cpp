@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 17:13:50 by tutku             #+#    #+#             */
-/*   Updated: 2026/03/22 19:21:38 by tutku            ###   ########.fr       */
+/*   Updated: 2026/03/22 22:13:39 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 Dog::Dog() : Animal ("dog")
 {
+	Brain *brain = new Brain();
 	std::cout << "Created Dog class: " << type << std::endl;
 }
 
@@ -38,10 +39,21 @@ Dog &Dog::operator=(const Dog &other)
 
 Dog::~Dog()
 {
+	delete brain;
 	std::cout << "Destroyed Dog class" << std::endl;
 }
 
 void Dog::makeSound() const
 {
 	std::cout << "Woof Woof Woof!" << std::endl;
+}
+
+void Dog::setIdea(int index, const std::string &idea)
+{
+	brain->setIdea(index, idea);
+}
+
+std::string Dog::getIdea(int index) const
+{
+	return (brain->getIdea(index));
 }
