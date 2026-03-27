@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 21:19:14 by tutku             #+#    #+#             */
-/*   Updated: 2026/03/22 21:58:56 by tutku            ###   ########.fr       */
+/*   Updated: 2026/03/27 21:19:45 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 Brain::Brain()
 {
-	for (int i = 0; i < 100; i++)
-		ideas[i] = "**empty**";
 	std::cout << "Created brain class" << std::endl;
 }
 
@@ -45,12 +43,14 @@ Brain::~Brain()
 std::string Brain::getIdea(int index) const
 {
 	if (index >= 0 && index < 100)
-		return (ideas[index]);
+		return (this->ideas[index]);
 	return "<<wrong index entered>>";
 }
 
 void Brain::setIdea(int index, const std::string &idea)
 {
 	if (index >= 0 && index < 100)
-		ideas[index] = idea;
+		this->ideas[index] = idea;
+	else
+		std::cout << "Enter a valid index" << std::endl;
 }

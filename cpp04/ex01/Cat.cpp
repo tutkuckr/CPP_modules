@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 17:13:50 by tutku             #+#    #+#             */
-/*   Updated: 2026/03/22 22:03:24 by tutku            ###   ########.fr       */
+/*   Updated: 2026/03/27 22:12:42 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 Cat::Cat() : Animal ("cat")
 {
-	Brain *brain = new Brain();
+	this->brain = new Brain();
 	std::cout << "Created Cat class: " << type << std::endl;
 }
 
 Cat::Cat(std::string type) : Animal(type)
 {
-	Brain *brain = new Brain();
+	this->brain = new Brain();
 	std::cout << "Created Cat class: " << type << std::endl;
 }
 
-Cat::Cat(const Cat &other) : Animal(other)
+Cat::Cat(const Cat &other) : Animal(other), brain(NULL)
 {
-	this->brain = new Brain(*other.brain);
+	*this = other;
 	std::cout << "Copied class: " << type << std::endl;
 }
 
@@ -35,9 +35,10 @@ Cat &Cat::operator=(const Cat &other)
 	if (this != &other)
 	{
 		Animal::operator=(other);
-		delete brain;
+		delete this->brain;
 		this->brain = new Brain(*other.brain);
 	}
+	std::cout << "Assigned Cat class: " << type << std::endl;
 	return (*this);
 }
 
