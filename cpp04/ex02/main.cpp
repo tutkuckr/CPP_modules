@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 16:53:25 by tutku             #+#    #+#             */
-/*   Updated: 2026/03/27 22:21:35 by tutku            ###   ########.fr       */
+/*   Updated: 2026/03/27 22:44:48 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,54 +27,48 @@ int main()
 {
 	printTitle("1. BASIC POLYMORPHISM TEST");
 
-	const Animal *meta = new Animal();
-	const Animal *j = new Dog();
-	const Animal *i = new Cat();
+	const Animal *dog = new Dog();
+	const Animal *cat = new Cat();
 
-	std::cout << "meta type: " << meta->getType() << std::endl;
-	std::cout << "j type: " << j->getType() << std::endl;
-	std::cout << "i type: " << i->getType() << std::endl;
+	std::cout << "dog type: " << dog->getType() << std::endl;
+	std::cout << "cat type: " << cat->getType() << std::endl;
 
 	std::cout << std::endl;
 	std::cout << "Sounds:" << std::endl;
-	meta->makeSound();
-	j->makeSound();
-	i->makeSound();
+	dog->makeSound();
+	cat->makeSound();
 
 	std::cout << std::endl;
 	std::cout << "Deleting through Animal pointers..." << std::endl;
-	delete meta;
-	delete j;
-	delete i;
+	delete dog;
+	delete cat;
 
-	printTitle("2. ARRAY OF ANIMAL POINTERS TEST");
+	printTitle("2. ARRAY OF ANIMAL POINTERS");
 
 	const int size = 6;
 	Animal *animals[size];
 
-	for (int k = 0; k < size / 2; k++)
-		animals[k] = new Dog();
+	for (int i = 0; i < size / 2; i++)
+		animals[i] = new Dog();
+	for (int i = size / 2; i < size; i++)
+		animals[i] = new Cat();
 
-	for (int k = size / 2; k < size; k++)
-		animals[k] = new Cat();
-
-	std::cout << std::endl;
-	std::cout << "Printing types and sounds from Animal* array:" << std::endl;
-	for (int k = 0; k < size; k++)
+	std::cout << "Printing all animal types and sounds:" << std::endl;
+	for (int i = 0; i < size; i++)
 	{
-		std::cout << "animals[" << k << "] type = " << animals[k]->getType() << std::endl;
-		animals[k]->makeSound();
+		std::cout << "animals[" << i << "] type: " << animals[i]->getType() << std::endl;
+		animals[i]->makeSound();
 	}
 
 	std::cout << std::endl;
-	std::cout << "Deleting all animals in array..." << std::endl;
-	for (int k = 0; k < size; k++)
-		delete animals[k];
+	std::cout << "Deleting all animals from array..." << std::endl;
+	for (int i = 0; i < size; i++)
+		delete animals[i];
 
-	printTitle("3. DOG IDEA STORAGE TEST");
+	printTitle("3. DOG IDEAS TEST");
 
 	Dog basicDog;
-	basicDog.setIdea(0, "Chase the postman");
+	basicDog.setIdea(0, "Chase cat");
 	basicDog.setIdea(1, "Eat food");
 	basicDog.setIdea(2, "Sleep");
 
@@ -82,12 +76,12 @@ int main()
 	std::cout << "basicDog idea[1]: " << basicDog.getIdea(1) << std::endl;
 	std::cout << "basicDog idea[2]: " << basicDog.getIdea(2) << std::endl;
 
-	printTitle("4. CAT IDEA STORAGE TEST");
+	printTitle("4. CAT IDEAS TEST");
 
 	Cat basicCat;
-	basicCat.setIdea(0, "Ignore humans");
-	basicCat.setIdea(1, "Break stuff");
-	basicCat.setIdea(2, "Sleep 19 hours");
+	basicCat.setIdea(0, "Ignore human");
+	basicCat.setIdea(1, "Knock glass");
+	basicCat.setIdea(2, "Sleep on keyboard");
 
 	std::cout << "basicCat idea[0]: " << basicCat.getIdea(0) << std::endl;
 	std::cout << "basicCat idea[1]: " << basicCat.getIdea(1) << std::endl;
@@ -98,18 +92,17 @@ int main()
 	Dog originalDog;
 	originalDog.setIdea(0, "Original dog idea 0");
 	originalDog.setIdea(1, "Original dog idea 1");
-	originalDog.setIdea(2, "Original dog idea 2");
 
 	Dog copiedDog(originalDog);
 
-	std::cout << "Before changing original:" << std::endl;
+	std::cout << "Before change:" << std::endl;
 	std::cout << "originalDog idea[0]: " << originalDog.getIdea(0) << std::endl;
 	std::cout << "copiedDog idea[0]:   " << copiedDog.getIdea(0) << std::endl;
 
 	originalDog.setIdea(0, "Changed original dog idea 0");
 
 	std::cout << std::endl;
-	std::cout << "After changing original:" << std::endl;
+	std::cout << "After changing originalDog:" << std::endl;
 	std::cout << "originalDog idea[0]: " << originalDog.getIdea(0) << std::endl;
 	std::cout << "copiedDog idea[0]:   " << copiedDog.getIdea(0) << std::endl;
 
@@ -120,23 +113,21 @@ int main()
 	Cat originalCat;
 	originalCat.setIdea(0, "Original cat idea 0");
 	originalCat.setIdea(1, "Original cat idea 1");
-	originalCat.setIdea(2, "Original cat idea 2");
 
 	Cat copiedCat(originalCat);
 
-	std::cout << "Before changing original:" << std::endl;
-	std::cout << "originalCat idea[1]: " << originalCat.getIdea(1) << std::endl;
-	std::cout << "copiedCat idea[1]:   " << copiedCat.getIdea(1) << std::endl;
+	std::cout << "Before change:" << std::endl;
+	std::cout << "originalCat idea[0]: " << originalCat.getIdea(0) << std::endl;
+	std::cout << "copiedCat idea[0]:   " << copiedCat.getIdea(0) << std::endl;
 
-	originalCat.setIdea(1, "Changed original cat idea 1");
-
-	std::cout << std::endl;
-	std::cout << "After changing original:" << std::endl;
-	std::cout << "originalCat idea[1]: " << originalCat.getIdea(1) << std::endl;
-	std::cout << "copiedCat idea[1]:   " << copiedCat.getIdea(1) << std::endl;
+	originalCat.setIdea(0, "Changed original cat idea 0");
 
 	std::cout << std::endl;
-	std::cout << "If deep copy is correct, copiedCat should keep old value." << std::endl;
+	std::cout << "After changing originalCat:" << std::endl;
+	std::cout << "originalCat idea[0]: " << originalCat.getIdea(0) << std::endl;
+	std::cout << "copiedCat idea[0]:   " << copiedCat.getIdea(0) << std::endl;
+
+	std::cout << std::endl;
 
 	printTitle("7. DOG COPY ASSIGNMENT DEEP COPY TEST");
 
@@ -166,7 +157,7 @@ int main()
 	std::cout << "dogB idea[0]: " << dogB.getIdea(0) << std::endl;
 
 	std::cout << std::endl;
-
+	
 	printTitle("8. CAT COPY ASSIGNMENT DEEP COPY TEST");
 
 	Cat catA;
@@ -196,18 +187,16 @@ int main()
 
 	std::cout << std::endl;
 
-	printTitle("9. POLYMORPHIC DELETION WITH IDEAS INSIDE");
+	printTitle("9. POLYMORPHIC DELETE TEST");
 
 	Animal *polyDog = new Dog();
 	Animal *polyCat = new Cat();
 
-	std::cout << "Created polyDog and polyCat as Animal*" << std::endl;
-	std::cout << "Deleting them now..." << std::endl;
-
+	std::cout << "Deleting polyDog and polyCat through Animal*..." << std::endl;
 	delete polyDog;
 	delete polyCat;
 
 	printTitle("10. END OF TESTS");
-	
+
 	return 0;
 }
