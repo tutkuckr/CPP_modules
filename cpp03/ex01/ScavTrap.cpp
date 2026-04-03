@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 03:57:38 by tutku             #+#    #+#             */
-/*   Updated: 2026/03/20 20:59:47 by tutku            ###   ########.fr       */
+/*   Updated: 2026/04/03 20:04:18 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &other)
 		this->energyPts = other.energyPts;
 		this->attackDmg = other.attackDmg;
 	}
+	std::cout << "Assigned ScavTrap: " << name << std::endl;
 	return (*this);
 }
 
