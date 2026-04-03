@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 21:01:20 by tutku             #+#    #+#             */
-/*   Updated: 2026/03/21 21:26:44 by tutku            ###   ########.fr       */
+/*   Updated: 2026/04/03 20:11:40 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ FragTrap &FragTrap::operator=(const FragTrap &other)
 		this->energyPts = other.energyPts;
 		this->attackDmg = other.attackDmg;
 	}
+	std::cout << "Assigned FragTrap: " << name << std::endl;
 	return (*this);
 }
 

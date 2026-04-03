@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 17:54:11 by tutku             #+#    #+#             */
-/*   Updated: 2026/03/22 16:06:58 by tutku            ###   ########.fr       */
+/*   Updated: 2026/04/03 20:29:09 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,15 @@ hierarchical class structure becomes:
    FragTrap   ScavTrap
 		\      /
 	  DiamondTrap
+
+
+***virtual public ClapTrap*** for FragTrap and ScavTrap
+both FragTrap and ScavTrap share the same single ClapTrap base inside DiamondTrap.
+class ScavTrap : virtual public ClapTrap
+class FragTrap : virtual public ClapTrap
+class DiamondTrap : public FragTrap, public ScavTrap
+
+FragTrap and ScavTrap do not each create their own separate ClapTrap part
+DiamondTrap ends up with one shared ClapTrap base
 */
+
