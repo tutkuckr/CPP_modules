@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 11:23:50 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/03/13 04:24:26 by tutku            ###   ########.fr       */
+/*   Updated: 2026/04/03 19:20:30 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int main()
 			  << std::endl;
 
 	for (int i = 0; i < 12; i++)
-		a.attack("Random"); //check
+		a.attack("Random");
 
 	std::cout << "\n--- Death test ---\n"
 			  << std::endl;
