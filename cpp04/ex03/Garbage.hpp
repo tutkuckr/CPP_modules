@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.cpp                                     :+:      :+:    :+:   */
+/*   Garbage.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 10:24:11 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/04/07 13:43:24 by tcakir-y         ###   ########.fr       */
+/*   Created: 2026/04/07 14:40:38 by tcakir-y          #+#    #+#             */
+/*   Updated: 2026/04/07 14:41:59 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ICharacter.hpp"
+#ifndef GARBAGE_HPP
+#define GARBAGE_HPP
 
-//base class -> parent - ICharacter
-//derived class -> Character
-
-ICharacter::ICharacter()
+class Garbage
 {
 
-}
+};
 
-ICharacter::ICharacter(const ICharacter &other)
-{
-
-}
-
-ICharacter &ICharacter::operator=(const ICharacter &other)
-{
-
-}
-
-virtual ICharacter::~ICharacter()
-{
-
-}
+#endif

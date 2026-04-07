@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:24:08 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/04/07 11:08:19 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/04/07 13:45:23 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ class ICharacter
 		std::string name;
 
 	public:
-		virtual ~ICharacter() {}
+		ICharacter();
+		ICharacter(const ICharacter &other);
+		ICharacter &operator=(const ICharacter &other);
+		virtual ~ICharacter();
+
 		virtual std::string const & getName() const = 0;
 		virtual void equip(AMateria* m) = 0;
 		virtual void unequip(int idx) = 0;

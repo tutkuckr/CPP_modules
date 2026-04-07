@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:26:38 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/04/07 10:27:31 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/04/07 15:42:49 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@
 class IMateriaSource
 {
 	public:
-		virtual ~IMateriaSource() {}
+		IMateriaSource();
+		IMateriaSource(const IMateriaSource &other);
+		IMateriaSource &operator=(const IMateriaSource &other);
+		virtual ~IMateriaSource();
+
 		virtual void learnMateria(AMateria*) = 0;
 		virtual AMateria* createMateria(std::string const & type) = 0;
 };
