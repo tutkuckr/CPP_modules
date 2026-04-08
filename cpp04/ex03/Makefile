@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+         #
+#    By: tutku <tutku@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/25 17:54:45 by tutku             #+#    #+#              #
-#    Updated: 2026/04/07 11:07:03 by tcakir-y         ###   ########.fr        #
+#    Updated: 2026/04/08 20:04:47 by tutku            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ SRC =	main.cpp\
 		Cure.cpp\
 		Ice.cpp\
 		ICharacter.cpp\
-		IMateriaSource.cpp
+		IMateriaSource.cpp\
+		MateriaSource.cpp\
+		Floor.cpp
 		
 
 # Convert source file name into object file path inside obj/

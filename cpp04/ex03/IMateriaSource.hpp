@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:26:38 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/04/07 16:06:09 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/04/08 20:15:48 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,17 @@
 
 #include <iostream>
 #include "AMateria.hpp"
+#define TOTAL_SLOT 4
+
+class AMateria;
 
 class IMateriaSource
 {
 	public:
-		IMateriaSource();
+		IMateriaSource(); //check
 		IMateriaSource(const IMateriaSource &other);
 		IMateriaSource &operator=(const IMateriaSource &other);
-		virtual ~IMateriaSource();
+		virtual ~IMateriaSource() {};
 
 		virtual void learnMateria(AMateria*) = 0;
 		virtual AMateria* createMateria(std::string const & type) = 0;

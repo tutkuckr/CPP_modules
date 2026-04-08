@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ICharacter.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:24:11 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/04/07 13:43:24 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/04/08 20:02:52 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,16 @@ ICharacter::ICharacter()
 
 }
 
-ICharacter::ICharacter(const ICharacter &other)
+ICharacter::ICharacter(const ICharacter &)
 {
-
+	
 }
 
 ICharacter &ICharacter::operator=(const ICharacter &other)
 {
-
-}
-
-virtual ICharacter::~ICharacter()
-{
-
+	if (this != &other)
+	{
+		
+	}
+	return *this;
 }

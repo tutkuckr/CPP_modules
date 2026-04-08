@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:24:08 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/04/07 13:45:23 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/04/08 18:35:15 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <iostream>
 #include "AMateria.hpp"
+
+class AMateria;
 
 class ICharacter
 {
@@ -25,7 +27,7 @@ class ICharacter
 		ICharacter();
 		ICharacter(const ICharacter &other);
 		ICharacter &operator=(const ICharacter &other);
-		virtual ~ICharacter();
+		virtual ~ICharacter() {};
 
 		virtual std::string const & getName() const = 0;
 		virtual void equip(AMateria* m) = 0;

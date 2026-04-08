@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:58:51 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/04/07 15:39:10 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/04/08 20:49:12 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,39 @@
 
 Character::Character() : name("")
 {
-	for (int i = 0; i < 4; i++)
-	{
-		inventory[i] = NULL;
-	}
+	setInventoryToNull();
 }
 
 Character::Character(std::string const &name) : name(name)
 {
-	for (int i = 0; i < 4; i++)
+	setInventoryToNull();
+}
+
+Character::Character(const Character &other) : name(other.name)
+{
+	for (int i = 0; i < TOTAL_SLOT; i++)
 	{
-		inventory[i] = NULL;
+		if (other.inventory[i] == NULL)
+			this->inventory[i] = NULL;
+		else
+			this->inventory[i] = other.inventory[i]->clone(); //check
 	}
 }
 
-Character::Character(const Character &other)
-{
-	
-}
-
 //delete old inventory 
-Character &Character::operator=(const Character &other) 
+Character &Character::operator=(const Character &other)
 {
+	this->name = other.name;
 	if (this != &other)
 	{
-		
+		for (int i = 0; i < TOTAL_SLOT; i++)
+		{
+			if (this->inventory[i])
+				delete inventory[i];
+			this->inventory[i] = NULL;
+			if (other.inventory[i] != NULL)
+				this->inventory[i] = other.inventory[i]->clone();
+		}
 	}
 	return (*this);
 }
@@ -46,7 +54,12 @@ Character &Character::operator=(const Character &other)
 //Materias must be deleted when a Character is destroyed.
 Character::~Character()
 {
-
+	for (int i = 0; i < TOTAL_SLOT; i++)
+	{
+		if (inventory[i])
+			delete inventory[i];
+	}
+	setInventoryToNull();
 }
 
 std::string const &Character::getName() const
@@ -57,11 +70,12 @@ std::string const &Character::getName() const
 // add a Materia to a full inventory -> nothing happens
 void Character::equip(AMateria* m)
 {
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < TOTAL_SLOT; i++)
 	{
 		if (inventory[i] == NULL)
 		{
 			inventory[i] = m;
+			std::cout << "Equipped " << inventory[i]->getType() << std::endl;
 			return;
 		}
 	}
@@ -73,7 +87,11 @@ void Character::unequip(int idx)
 {
 	if (!(idx < 0 || idx > 3))
 	{
-		//inventory[idx]//copy this value to another object
+		if (inventory[idx]) //copy value to floor object
+		{
+			dropped.drop(inventory[idx]);
+			inventory[idx] = NULL;
+		}
 	}
 	else
 		std::cout << "Wrong index! Nothing happened" << std::endl;
@@ -81,18 +99,27 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter& target)
 {
-	if (!(idx < 0 || idx > 3))
+	if (!(idx < 0 || idx > 3) && inventory[idx])
 	{
 		inventory[idx]->use(target);
 	}
 	else
-		std::cout << "Wrong index! Nothing happened" << std::endl;
+		std::cout 
+		<< "Wrong index or no materia found at idx! Nothing happened"
+		<< std::endl;
 }
 
+void Character::setInventoryToNull()
+{
+	for (int i = 0; i < TOTAL_SLOT; i++)
+	{
+		inventory[i] = NULL;
+	}
+}
 
 /*
 todo:
-*character class's equip,unequip, use functions
+*character class's unequip, use functions
 *creation of garbage collector, free them later
 *
 */
