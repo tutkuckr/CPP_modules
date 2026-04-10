@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 17:13:50 by tutku             #+#    #+#             */
-/*   Updated: 2026/03/22 19:21:38 by tutku            ###   ########.fr       */
+/*   Updated: 2026/04/10 12:05:41 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog() : Animal ("dog")
+Dog::Dog() : Animal ("Dog")
 {
 	std::cout << "Created Dog class: " << type << std::endl;
 }

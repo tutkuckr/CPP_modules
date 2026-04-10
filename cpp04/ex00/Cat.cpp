@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 17:13:50 by tutku             #+#    #+#             */
-/*   Updated: 2026/03/22 19:25:06 by tutku            ###   ########.fr       */
+/*   Updated: 2026/04/10 12:05:46 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat() : Animal ("cat")
+Cat::Cat() : Animal ("Cat")
 {
 	std::cout << "Created Cat class: " << type << std::endl;
 }

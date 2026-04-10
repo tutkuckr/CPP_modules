@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 16:53:25 by tutku             #+#    #+#             */
-/*   Updated: 2026/03/22 20:19:11 by tutku            ###   ########.fr       */
+/*   Updated: 2026/04/10 12:14:46 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,47 +50,44 @@ static void line(std::string title)
 
 int main()
 {
-	line("1. BASIC CONSTRUCTION OF DIRECT OBJECTS");
+	line("1. BASIC TESTS");
 
 	Animal a;
-	std::cout << "Animal type: " << a.getType() << std::endl;
 	a.makeSound();
 
 	std::cout << std::endl;
 
 	Dog dog;
-	std::cout << "Dog type: " << dog.getType() << std::endl;
 	dog.makeSound();
 
 	std::cout << std::endl;
 
 	Cat cat;
-	std::cout << "Cat type: " << cat.getType() << std::endl;
 	cat.makeSound();
 
-	line("2. DIRECT OBJECT CALLS");
+	line("2. MAKESOUND() TEST");
 	std::cout << "Calling makeSound():" << std::endl;
 
 	a.makeSound();
 	dog.makeSound();
 	cat.makeSound();
 
-	line("3. POLYMORPHISM WITH BASE CLASS POINTERS");
+	line("3. BASE CLASS POINTERS");
 
-	const Animal *meta = new Animal();
+	const Animal *animal = new Animal();
 	const Animal *j = new Dog();
 	const Animal *i = new Cat();
 
-	std::cout << "meta type: " << meta->getType() << std::endl;
-	std::cout << "j type: " << j->getType() << std::endl;
-	std::cout << "i type: " << i->getType() << std::endl;
+	//std::cout << "animal type: " << animal->getType() << std::endl;
+	//std::cout << "j type: " << j->getType() << std::endl;
+	//std::cout << "i type: " << i->getType() << std::endl;
 
-	std::cout << "\nCalling makeSound() through Animal pointers:" << std::endl;
-	meta->makeSound();
+	std::cout << "\nTesting makeSound() with Animal pointers:" << std::endl;
+	animal->makeSound();
 	j->makeSound();
 	i->makeSound();
 
-	line("4. POLYMORPHISM WITH BASE CLASS REFERENCES");
+	line("4. BASE CLASS REFERENCES");
 
 	const Animal &refDog = dog;
 	const Animal &refCat = cat;
@@ -116,6 +113,8 @@ int main()
 	animals[4] = new Animal();
 	animals[5] = new Dog();
 
+	std::cout << std::endl;
+	
 	for (int idx = 0; idx < 6; idx++)
 	{
 		std::cout << "animals[" << idx << "] type: " << animals[idx]->getType() << std::endl;
@@ -131,7 +130,8 @@ int main()
 		Cat localCat;
 		Animal localAnimal;
 
-		std::cout << "Inside scope:" << std::endl;
+		std::cout << std::endl;
+
 		localDog.makeSound();
 		localCat.makeSound();
 		localAnimal.makeSound();
@@ -147,12 +147,14 @@ int main()
 	const Animal *ptr2 = new Cat();
 	const Animal *ptr3 = new Animal();
 
+	std::cout << std::endl;
+	
 	std::cout << "Deleting ptr1" << std::endl;
 	delete ptr1;
-
+	std::cout << std::endl;
 	std::cout << "Deleting ptr2" << std::endl;
 	delete ptr2;
-
+	std::cout << std::endl;
 	std::cout << "Deleting ptr3" << std::endl;
 	delete ptr3;
 
@@ -160,9 +162,6 @@ int main()
 
 	const WrongAnimal *wa = new WrongAnimal();
 	const WrongAnimal *wc = new WrongCat();
-
-	std::cout << "WrongAnimal type: " << wa->getType() << std::endl;
-	std::cout << "WrongCat through WrongAnimal* type: " << wc->getType() << std::endl;
 
 	std::cout << "\nCalling makeSound() for wrong:" << std::endl;
 	wa->makeSound();
@@ -174,7 +173,7 @@ int main()
 	line("9. DIRECT WRONGCAT OBJECT CALL");
 
 	WrongCat wrongCat;
-	std::cout << "WrongCat direct object type: " << wrongCat.getType() << std::endl;
+	std::cout << std::endl;
 	wrongCat.makeSound();
 
 	//Direct object call uses WrongCat::makeSound() normally,
@@ -207,7 +206,7 @@ int main()
 
 	line("12. CLEANING REMAINING ANIMALS");
 
-	delete meta;
+	delete animal;
 	delete j;
 	delete i;
 
