@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:28:03 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/04/10 10:29:12 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/04/10 12:59:08 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int main()
 	printTitle("1. SUBJECT'S TEST");
 
 	IMateriaSource *src = new MateriaSource();
+
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 
@@ -55,14 +56,19 @@ int main()
 
 	AMateria *tmp;
 
+	std::cout << std::endl;
+
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
 
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
+	
+	std::cout << std::endl;
 
 	ICharacter *bob = new Character("bob");
 
+	std::cout << std::endl;
 	me->use(0, *bob);
 	me->use(1, *bob);
 
@@ -75,6 +81,8 @@ int main()
 	src = new MateriaSource();
 
 	src->learnMateria(new Ice());
+
+	std::cout << std::endl;
 	tmp = src->createMateria("fire");
 
 	if (tmp == NULL)
@@ -110,9 +118,12 @@ int main()
 	alice.equip(ice1);
 	alice.equip(cure1);
 
+	std::cout << std::endl;
+
 	alice.use(0, enemy);
 	alice.use(1, enemy);
 
+	std::cout << std::endl;
 	std::cout << "invalid indexes:" << std::endl; //0-3 is valid
 	alice.use(-1, enemy);
 	alice.use(4, enemy);
@@ -129,6 +140,7 @@ int main()
 	// 5th item should not fit
 	full.equip(new Ice());
 
+	std::cout << std::endl;
 	full.use(0, enemy);
 	full.use(1, enemy);
 	full.use(2, enemy);
@@ -141,16 +153,19 @@ int main()
 	dropper.equip(new Ice());
 	dropper.equip(new Cure());
 
+	std::cout << std::endl;
 	std::cout << "Before unequip:" << std::endl;
 	dropper.use(0, enemy);
 	dropper.use(1, enemy);
 
+	std::cout << std::endl;
 	dropper.unequip(0);
 
 	std::cout << "After unequip slot 0:" << std::endl;
 	dropper.use(0, enemy);
 	dropper.use(1, enemy);
 
+	std::cout << std::endl;
 	std::cout << "Trying invalid unequip:" << std::endl;
 	dropper.unequip(-1);
 	dropper.unequip(4);
@@ -161,6 +176,7 @@ int main()
 
 	original.equip(new Ice());
 	original.equip(new Cure());
+	std::cout << std::endl;
 
 	std::cout << "Original uses before copy:" << std::endl;
 	original.use(0, enemy);
@@ -168,18 +184,22 @@ int main()
 
 	Character copied(original);
 
+	std::cout << std::endl;
 	std::cout << "Copied uses after copy constructor:" << std::endl;
 	copied.use(0, enemy);
 	copied.use(1, enemy);
 
+	std::cout << std::endl;
 	std::cout << "Unequipping original slot 0..." << std::endl;
 	original.unequip(0);
 
+	std::cout << std::endl;
 	std::cout << "Original after unequip:" << std::endl;
 	original.use(0, enemy);
 	original.use(1, enemy);
 
-	std::cout << "Copied should still keep its own materias:" << std::endl;
+	std::cout << std::endl;
+	std::cout << "Copied still has its own materias:" << std::endl;
 	copied.use(0, enemy);
 	copied.use(1, enemy);
 
@@ -193,33 +213,41 @@ int main()
 
 	second.equip(new Cure());
 
+	std::cout << std::endl;
 	std::cout << "Before assignment:" << std::endl;
+	std::cout << std::endl;
 	std::cout << "first uses:" << std::endl;
 	first.use(0, enemy);
 	first.use(1, enemy);
 
+	std::cout << std::endl;
 	std::cout << "second uses:" << std::endl;
 	second.use(0, enemy);
 	second.use(1, enemy);
 
 	second = first;
-
+	std::cout << std::endl;
 	std::cout << "After assignment:" << std::endl;
+	std::cout << std::endl;
 	std::cout << "first uses:" << std::endl;
 	first.use(0, enemy);
 	first.use(1, enemy);
 
+	std::cout << std::endl;
 	std::cout << "second uses:" << std::endl;
 	second.use(0, enemy);
 	second.use(1, enemy);
 
+	std::cout << std::endl;
 	std::cout << "Unequipping first slot 1..." << std::endl;
 	first.unequip(1);
 
+	std::cout << std::endl;
 	std::cout << "first after unequip:" << std::endl;
 	first.use(0, enemy);
 	first.use(1, enemy);
 
+	std::cout << std::endl;
 	std::cout << "second still keeps its own copy:" << std::endl;
 	second.use(0, enemy);
 	second.use(1, enemy);
@@ -229,6 +257,7 @@ int main()
 	MateriaSource sourceA;
 	sourceA.learnMateria(new Ice());
 	sourceA.learnMateria(new Cure());
+	std::cout << std::endl;
 
 	MateriaSource sourceB(sourceA);
 
@@ -243,6 +272,7 @@ int main()
 	tester.equip(b1);
 	tester.equip(a2);
 	tester.equip(b2);
+	std::cout << std::endl;
 
 	tester.use(0, enemy);
 	tester.use(1, enemy);
@@ -259,6 +289,7 @@ int main()
 
 	sourceD = sourceC;
 
+	std::cout << std::endl;
 	AMateria *d1 = sourceD.createMateria("ice");
 	AMateria *d2 = sourceD.createMateria("cure");
 
@@ -300,8 +331,10 @@ int main()
 	printTitle("12 ");
 
 	IMateriaSource *polySrc = new MateriaSource();
+
 	polySrc->learnMateria(new Ice());	//polySrc creates ice and cure objs
 	polySrc->learnMateria(new Cure());
+	std::cout << std::endl;
 
 	//character equips and uses AMateria objs
 	ICharacter *hero = new Character("hero");
@@ -312,6 +345,7 @@ int main()
 
 	hero->equip(p1); //hero equips ice and cure objs
 	hero->equip(p2);
+	std::cout << std::endl;
 
 	hero->use(0, *villain);
 	hero->use(1, *villain);
