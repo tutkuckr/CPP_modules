@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 11:39:29 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/04/08 20:33:19 by tutku            ###   ########.fr       */
+/*   Updated: 2026/04/10 10:27:25 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void MateriaSource::learnMateria(AMateria *materia)
 			return;
 		}
 	}
+	delete materia;
 }
 /*
 Returns a new Materia.

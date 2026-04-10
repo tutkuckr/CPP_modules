@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:58:51 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/04/08 20:49:12 by tutku            ###   ########.fr       */
+/*   Updated: 2026/04/10 10:28:00 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void Character::equip(AMateria* m)
 		}
 	}
 	std::cout << "Nothing happened, inventory already full!" << std::endl;
+	delete m;
 }
 
 //save address before unequip

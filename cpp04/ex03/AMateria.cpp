@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:21:06 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/04/08 20:49:28 by tutku            ###   ########.fr       */
+/*   Updated: 2026/04/10 09:58:27 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ AMateria &AMateria::operator=(const AMateria &other)
 {
 	if (this != &other)
 	{
-		this->type = other.type; //check
+		this->type = other.type;
 	}
 	return (*this);
 }
