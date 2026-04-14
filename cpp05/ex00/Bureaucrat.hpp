@@ -6,20 +6,23 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 16:55:54 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/04/10 17:16:13 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/04/14 14:22:05 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
-#include <iostream>
+#include "GradeTooHighException.hpp"
+#include "GradeTooLowException.hpp"
 
 class Bureaucrat
 {
 	private:
 		std::string const _name;
 		int _grade; //highest:1, lowest:150
+		//GradeTooHighException _high;
+		//GradeTooLowException _low;
 	public:
 
 		Bureaucrat();
@@ -27,13 +30,24 @@ class Bureaucrat
 		Bureaucrat &operator=(const Bureaucrat &other);
 		~Bureaucrat();
 		
-		const std::string getName();
-		int getGrade();
-		void incrementGrade(int amount);
-		void decrementGrade(int amount);
-
-
+		Bureaucrat(std::string const name, int grade);
+		Bureaucrat(int grade);
+		Bureaucrat(std::string const name);
+		const std::string getName() const;
+		int getGrade() const;
+		void incrementGrade();
+		void decrementGrade();
 };
 
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &other);
+
+
+/*
+Functions:
+*with grade, name
+*with grade , noName
+*with noGrade, name
+*with noGrade, noName
+*/
 
 #endif

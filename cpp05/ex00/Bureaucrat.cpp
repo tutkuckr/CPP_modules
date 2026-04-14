@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 16:55:49 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/04/10 17:17:30 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/04/14 14:31:23 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ throw - triggers an exception
 catch - handles the error
 */
 
-Bureaucrat::Bureaucrat()
+Bureaucrat::Bureaucrat() : _name("noName"), _grade(150)
 {
 
 }
@@ -43,42 +43,97 @@ Bureaucrat::~Bureaucrat()
 
 }
 
-const std::string Bureaucrat::getName()
+//noGrade
+Bureaucrat::Bureaucrat(std::string const name) :  _name(name), _grade(150)
 {
-	return (_name);
+	
 }
 
-int Bureaucrat::getGrade()
+//noName
+Bureaucrat::Bureaucrat(int grade) : _name("noName"), _grade(grade)
 {
-	return (_grade);
-}
-
-void Bureaucrat::incrementGrade(int amount)
-{
-	_grade -= amount;
 	try
 	{
 		if (_grade < 1)
-			throw "Bureaucrat::GradeTooHighException";
+			throw GradeTooHighException(getGrade());
+		else if (_grade > 150)
+			throw GradeTooLowException(getGrade());
 	}
-	catch(const std::string err)
+	catch(GradeTooHighException &e)
 	{
-		std::cerr << err << std::endl;
+		std::cerr << e.what() << getGrade() << '\n';
+	}
+	catch(GradeTooLowException &e)
+	{
+		std::cerr << e.what() << '\n';
 	}
 }
 
-void Bureaucrat::decrementGrade(int amount)
+//name and grade
+Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name), _grade(grade)
 {
-	_grade += amount;
 	try
 	{
-		if (_grade > 150)
-			throw "Bureaucrat::GradeTooLowException";
+		if (_grade < 1)
+			throw GradeTooHighException(getGrade());
+		else if (_grade > 150)
+			throw GradeTooLowException(getGrade());
 	}
-	catch(const std::string err)
+	catch(GradeTooHighException &e)
 	{
-		std::cerr << err << std::endl;
+		std::cerr << e.what() << getGrade() << '\n';
+	}
+	catch(GradeTooLowException &e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+}
+
+void Bureaucrat::incrementGrade()
+{
+	try
+	{
+		_grade --;
+		if (_grade < 1)
+			throw GradeTooHighException(getGrade());
+	}
+	catch(GradeTooHighException &e)
+	{
+		std::cerr << e.what() << getGrade() << std::endl;
+		_grade ++; //check
+	}
+}
+
+void Bureaucrat::decrementGrade()
+{
+	std::cout << "Trying to decrement grade.." << std::endl;
+	try
+	{
+		_grade ++;
+		if (_grade > 150)
+			throw GradeTooLowException(getGrade());
+	}
+	catch(GradeTooLowException &e)
+	{
+		std::cerr << e.what() << std::endl;
+		_grade --; //check
 	}
 	
 }
 
+const std::string Bureaucrat::getName() const
+{
+	return (_name);
+}
+
+int Bureaucrat::getGrade() const
+{
+	return (_grade);
+}
+
+//operator for when the object is passed as a parameter
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &other)
+{
+	os << (other.getName() + ", bureaucrat grade " + std::to_string(other.getGrade()));
+	return (os);
+}
