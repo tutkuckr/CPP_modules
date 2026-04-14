@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 12:16:47 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/04/14 14:25:27 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/04/14 16:02:02 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 GradeTooHighException::GradeTooHighException(int grade) : _grade(grade)
 {
-	_message = "Grade too high! " + std::to_string(getGrade());
+	_message = "Grade too high! " +  std::to_string(_grade); //check 0150
 }
 
 const char *GradeTooHighException::what()

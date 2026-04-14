@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 16:55:49 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/04/14 14:31:23 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/04/14 16:07:39 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ Bureaucrat::Bureaucrat(int grade) : _name("noName"), _grade(grade)
 			throw GradeTooHighException(getGrade());
 		else if (_grade > 150)
 			throw GradeTooLowException(getGrade());
+		_grade = grade;
 	}
 	catch(GradeTooHighException &e)
 	{
@@ -70,14 +71,16 @@ Bureaucrat::Bureaucrat(int grade) : _name("noName"), _grade(grade)
 }
 
 //name and grade
-Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name), _grade(grade)
+Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name)
 {
 	try
 	{
-		if (_grade < 1)
-			throw GradeTooHighException(getGrade());
-		else if (_grade > 150)
-			throw GradeTooLowException(getGrade());
+		_grade = 150;
+		if (grade < 1)
+			throw GradeTooHighException(grade);
+		else if (grade > 150)
+			throw GradeTooLowException(grade);
+		_grade = grade;
 	}
 	catch(GradeTooHighException &e)
 	{
@@ -93,14 +96,13 @@ void Bureaucrat::incrementGrade()
 {
 	try
 	{
-		_grade --;
-		if (_grade < 1)
+		if (_grade == 1)
 			throw GradeTooHighException(getGrade());
+		_grade --;
 	}
 	catch(GradeTooHighException &e)
 	{
 		std::cerr << e.what() << getGrade() << std::endl;
-		_grade ++; //check
 	}
 }
 
@@ -109,16 +111,14 @@ void Bureaucrat::decrementGrade()
 	std::cout << "Trying to decrement grade.." << std::endl;
 	try
 	{
-		_grade ++;
-		if (_grade > 150)
+		if (_grade == 150)
 			throw GradeTooLowException(getGrade());
+		_grade ++;
 	}
 	catch(GradeTooLowException &e)
 	{
 		std::cerr << e.what() << std::endl;
-		_grade --; //check
 	}
-	
 }
 
 const std::string Bureaucrat::getName() const

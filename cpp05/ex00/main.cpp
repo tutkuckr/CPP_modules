@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 17:00:20 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/04/14 14:29:39 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/04/14 16:12:55 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,43 +30,47 @@ static void printTitle(const std::string& title)
 
 int main()
 {
-	// 1. Valid bureaucrat
 	printTitle("1. VALID BUREAUCRAT CREATION");
 	try
 	{
 		Bureaucrat a("Alice", 75);
 		std::cout << a << std::endl;
 	}
-	catch (std::exception &e)
+	catch (GradeTooHighException &e)
 	{
 		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
 
-	// 2. Grade too high on construction
 	printTitle("2. GRADE TOO HIGH ON CONSTRUCTION");
 	try
 	{
 		Bureaucrat b("Bob", 0);
 		std::cout << b << std::endl;
 	}
-	catch (std::exception &e)
+	catch(GradeTooHighException &e)
+	{
+		std::cout << "Exception caught: " << e.what() << std::endl;
+	}
+	catch(GradeTooLowException &e)
 	{
 		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
 
-	// 3. Grade too low on construction
 	printTitle("3. GRADE TOO LOW ON CONSTRUCTION");
 	try
 	{
 		Bureaucrat c("Charlie", 151);
 		std::cout << c << std::endl;
 	}
-	catch (std::exception &e)
+	catch (GradeTooHighException &e)
+	{
+		std::cout << "Exception caught: " << e.what() << std::endl;
+	}
+	catch(GradeTooLowException &e)
 	{
 		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
 
-	// 4. Increment grade normally
 	printTitle("4. NORMAL INCREMENT");
 	try
 	{
@@ -75,7 +79,7 @@ int main()
 		d.incrementGrade();
 		std::cout << "After increment:  " << d << std::endl;
 	}
-	catch (std::exception &e)
+	catch (GradeTooHighException &e)
 	{
 		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
@@ -89,7 +93,7 @@ int main()
 		e.decrementGrade();
 		std::cout << "After decrement:  " << e << std::endl;
 	}
-	catch (std::exception &e)
+	catch (GradeTooHighException &e)
 	{
 		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
@@ -103,7 +107,7 @@ int main()
 		f.incrementGrade();
 		std::cout << "After increment:  " << f << std::endl;
 	}
-	catch (std::exception &e)
+	catch (GradeTooHighException &e)
 	{
 		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
@@ -117,7 +121,7 @@ int main()
 		g.decrementGrade();
 		std::cout << "After decrement:  " << g << std::endl;
 	}
-	catch (std::exception &e)
+	catch (GradeTooHighException &e)
 	{
 		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
@@ -135,7 +139,7 @@ int main()
 		h.incrementGrade(); // should throw
 		std::cout << h << std::endl;
 	}
-	catch (std::exception &e)
+	catch (GradeTooHighException &e)
 	{
 		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
@@ -153,7 +157,7 @@ int main()
 		i.decrementGrade(); // should throw
 		std::cout << i << std::endl;
 	}
-	catch (std::exception &e)
+	catch (GradeTooHighException &e)
 	{
 		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
@@ -168,7 +172,7 @@ int main()
 		std::cout << "Original: " << original << std::endl;
 		std::cout << "Copy:     " << copy << std::endl;
 	}
-	catch (std::exception &e)
+	catch (GradeTooHighException &e)
 	{
 		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
@@ -190,7 +194,7 @@ int main()
 		std::cout << "First:  " << first << std::endl;
 		std::cout << "Second: " << second << std::endl;
 	}
-	catch (std::exception &e)
+	catch (GradeTooHighException &e)
 	{
 		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
@@ -202,7 +206,7 @@ int main()
 		Bureaucrat z("Zara", 50);
 		std::cout << z << std::endl;
 	}
-	catch (std::exception &e)
+	catch (GradeTooHighException &e)
 	{
 		std::cout << "Exception caught: " << e.what() << std::endl;
 	}

@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 16:55:54 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/04/14 14:22:05 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/04/14 15:34:04 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ class Bureaucrat
 };
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &other);
-
 
 /*
 Functions:
