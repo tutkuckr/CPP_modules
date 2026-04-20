@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+         #
+#    By: tutku <tutku@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/25 17:54:45 by tutku             #+#    #+#              #
-#    Updated: 2026/04/14 13:31:20 by tcakir-y         ###   ########.fr        #
+#    Updated: 2026/04/20 15:55:57 by tutku            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,7 @@ OBJ_DIR = obj
 
 # Source files
 SRC =	main.cpp\
-		Bureaucrat.cpp\
-		GradeTooHighException.cpp\
-		GradeTooLowException.cpp
+		Bureaucrat.cpp
 		
 
 # Convert source file name into object file path inside obj/
