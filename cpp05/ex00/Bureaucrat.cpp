@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 16:55:49 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/04/20 17:24:32 by tutku            ###   ########.fr       */
+/*   Updated: 2026/04/23 17:36:21 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ void Bureaucrat::incrementGrade()
 	std::cout << "Trying to increment grade.." << std::endl;
 	if (_grade == 1)
 		throw GradeTooHighException();
+	std::cout << "Before: " << *this << std::endl;
 	_grade --;
 	std::cout << "Grade incremented!" << std::endl;
+	std::cout << "After: " << *this << std::endl;
 }
 
 void Bureaucrat::decrementGrade()
@@ -69,8 +71,10 @@ void Bureaucrat::decrementGrade()
 	std::cout << "Trying to decrement grade.." << std::endl;
 	if (_grade == 150)
 		throw GradeTooLowException();
+	std::cout << "Before: " << *this << std::endl;
 	_grade ++;
 	std::cout << "Grade decremented!" << std::endl;
+	std::cout << "After: " << *this << std::endl;
 }
 
 const std::string Bureaucrat::getName() const

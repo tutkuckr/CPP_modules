@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 17:00:20 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/04/20 17:35:29 by tutku            ###   ########.fr       */
+/*   Updated: 2026/04/23 17:44:23 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,18 +70,36 @@ int main()
 
 	printSeparator("Normal increment (grade 5 -> 4)");
 	{
-		Bureaucrat b("Eve", 5);
-		std::cout << "Before: " << b << std::endl;
-		b.incrementGrade();
-		std::cout << "After:  " << b << std::endl;
+		try
+		{
+			Bureaucrat b("Eve", 5);
+			b.incrementGrade();
+		}
+		catch (const Bureaucrat::GradeTooHighException &e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+		catch (const Bureaucrat::GradeTooLowException &e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 	}
 
 	printSeparator("Normal decrement (grade 5 -> 6)");
 	{
-		Bureaucrat b("Frank", 5);
-		std::cout << "Before: " << b << std::endl;
-		b.decrementGrade();
-		std::cout << "After:  " << b << std::endl;
+		try
+		{
+			Bureaucrat b("Frank", 5);
+			b.incrementGrade();
+		}
+		catch (const Bureaucrat::GradeTooHighException &e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+		catch (const Bureaucrat::GradeTooLowException &e)
+		{
+			std::cerr << "Caught: " << e.what() << '\n';
+		}
 	}
 
 	printSeparator("Increment at grade 1 -> GradeTooHighException");
@@ -95,6 +113,10 @@ int main()
 		{
 			std::cout << "Caught: " << e.what() << std::endl;
 		}
+		catch (const Bureaucrat::GradeTooLowException &e)
+		{
+			std::cerr << "Caught: " << e.what() << '\n';
+		}
 	}
 
 	printSeparator("Decrement at grade 150 -> GradeTooLowException");
@@ -103,6 +125,10 @@ int main()
 		{
 			Bureaucrat b("Hank", 150);
 			b.decrementGrade();
+		}
+		catch (const Bureaucrat::GradeTooHighException &e)
+		{
+			std::cout << "Caught: " << e.what() << std::endl;
 		}
 		catch (const Bureaucrat::GradeTooLowException &e)
 		{
@@ -136,9 +162,8 @@ int main()
 		}
 		catch (const std::exception &e)
 		{
-			std::cout << "Caught via std::exception: " << e.what() << std::endl;
+			std::cout << "Caught std::exception: " << e.what() << std::endl;
 		}
 	}
-
 	return (0);
 }
