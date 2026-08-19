@@ -5,74 +5,57 @@
 #                                                     +:+ +:+         +:+      #
 #    By: tutku <tutku@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/08/19 13:58:39 by tutku             #+#    #+#              #
-#    Updated: 2026/08/19 15:49:48 by tutku            ###   ########.fr        #
+#    Created: 2026/02/25 17:54:45 by tutku             #+#    #+#              #
+#    Updated: 2026/04/20 15:55:57 by tutku            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-# Executable name
-NAME = ex00
 
 # Compiler
 CXX = c++
 
 # Compiler flags
-CXXFLAGS = -Wall -Wextra -Werror -std=c++20
+CXXFLAGS = -Wall -Werror -Wextra -std=c++20
 
 # Directories
 OBJ_DIR = obj
-INC_DIR = inc
-SRC_DIR = src
-
-# Header search path
-CPP_FLAGS = -I$(INC_DIR)
 
 # Source files
 SRC =	main.cpp\
 		Bureaucrat.cpp
+		
 
 # Convert source file name into object file path inside obj/
 OBJECTS = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 
-# Rules
+# Executable name
+NAME = ex00
 
 # Default rule: builds executable
 all: $(NAME)
 
+# Rule to compile .cpp files into .o files in obj/
+$(OBJ_DIR)/%.o: %.cpp
+		@mkdir -p $(OBJ_DIR)
+		@echo "\033[0;33mCompiling $<.."
+		@$(CXX) $(CXXFLAGS) -c $< -o $@
+
 # Rule to link executable
 $(NAME):$(OBJECTS)
-	@$(CXX) $(CXXFLAGS) $(OBJECTS) -o $(NAME)
-	@echo "$(GREEN)All files compiled!$(RESET)"
-
-# Compile src/*.cpp into obj/*.o
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	@mkdir -p $(OBJ_DIR)
-	@echo "$(PURPLE)Compiling $<...$(RESET)"
-	@$(CXX) $(CXXFLAGS) $(CPP_FLAGS) -c $< -o $@
+	@$(CXX) $(CXXFLAGS) $(OBJECTS) -o $(NAME) 
+	@echo "\033[0;32mAll files compiled!"
 
 # Clean rule: removes object files
 clean:
 	@rm -rf $(OBJ_DIR)
-	@echo "$(RED)All object files removed. $(RESET)"
+	@echo "\033[0;31mAll object files removed."
 
-# Full clean rule: Remove object files and executable
+# Full clean rule: removes executables
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(RED)All executable file removed. $(RESET)"
+	@echo "\033[0;31mAll executable files removed."
 
 # Recompile everything
 re: fclean all
-	@echo "$(PURPLE)Object + exec files have been cleaned and rebuilt.$(RESET)"
-	
+	@echo "Object + exec files have been cleaned and rebuilt."
 # Mark targets that are not actual files
 .PHONY: all clean fclean re
-
-# Colors
-PURPLE = \033[35m
-CYAN = \033[36m
-BLUE = \033[34m
-PINK = \033[95m
-RED = \033[31m
-GREEN = \033[1;32m
-YELLOW = \033[33m
-RESET = \033[0m
