@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 14:12:27 by tutku             #+#    #+#             */
-/*   Updated: 2026/08/19 17:37:06 by tutku            ###   ########.fr       */
+/*   Updated: 2026/08/31 14:43:06 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 #define PURPLE "\033[35m"
 #define BLUE "\033[34m"
 
+#define EX00_TEST 1
+
 #include <iostream>
 #include <string>
 
@@ -32,17 +34,33 @@ class Bureaucrat
 		int					_grade;
 
 	public:
+		// ========================CONSTRUCTORS============================
 		Bureaucrat();
 		~Bureaucrat();
 		Bureaucrat(const Bureaucrat &other);
 		Bureaucrat &operator=(const Bureaucrat &other);
 		Bureaucrat(const std::string name, int grade);
 
+		// ========================MEMBER FUNCTIONS========================
 		const std::string	getName() const;
 		int					getGrade() const;
-
 		void				incrementGrade();
 		void				decrementGrade();
+
+		// ========================EXCEPTIONS==============================
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				const char *what() const noexcept override;
+		};
+
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				const char *what() const noexcept override;
+		};
 };
+
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
 
 #endif
