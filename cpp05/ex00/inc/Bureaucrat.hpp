@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 14:12:27 by tutku             #+#    #+#             */
-/*   Updated: 2026/08/31 14:43:06 by tutku            ###   ########.fr       */
+/*   Updated: 2026/09/01 12:18:02 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-#define BUREAUCRAT_HPP
+#ifndef EX00_BUREAUCRAT_HPP
+#define EX00_BUREAUCRAT_HPP
 
 #define RESET "\033[0m"
 #define YELLOW "\033[33m"
