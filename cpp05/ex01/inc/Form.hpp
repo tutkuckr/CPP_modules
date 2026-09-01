@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 17:34:36 by tutku             #+#    #+#             */
-/*   Updated: 2026/08/31 20:51:14 by tutku            ###   ########.fr       */
+/*   Updated: 2026/09/01 11:51:07 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;
-
-#define EXO1_TEST 1
 
 class Form
 {

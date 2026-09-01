@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 14:12:27 by tutku             #+#    #+#             */
-/*   Updated: 2026/08/31 21:26:12 by tutku            ###   ########.fr       */
+/*   Updated: 2026/09/01 12:22:52 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-#define BUREAUCRAT_HPP
+#ifndef EX01_BUREAUCRAT_HPP
+#define EX01_BUREAUCRAT_HPP
 
 #define RESET "\033[0m"
 #define YELLOW "\033[33m"
@@ -28,6 +28,7 @@
 #include <exception>
 #include <string>
 
+#include "Form.hpp"
 class Form;
 
 class Bureaucrat

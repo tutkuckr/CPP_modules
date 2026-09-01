@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 14:12:32 by tutku             #+#    #+#             */
-/*   Updated: 2026/08/31 21:43:45 by tutku            ###   ########.fr       */
+/*   Updated: 2026/09/01 11:50:25 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void Bureaucrat::decrementGrade()
 	std::cout << PINK << "[AFTER DECREMENT] " << RESET << *this << std::endl;
 }
 
-//TODO:finish
 void Bureaucrat::signForm(Form &form)
 {
 	try
@@ -88,9 +87,12 @@ void Bureaucrat::signForm(Form &form)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << this->getName() << e.what() << '\n';
+		std::cerr << this->getName()
+				  << " couldn't sign " 
+				  << form.getName()
+				  << " because "
+				  << e.what() << '\n';
 	}
-	
 }
 
 // ========================EXCEPTIONS==============================
