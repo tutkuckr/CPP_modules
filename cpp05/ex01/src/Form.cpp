@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 17:54:24 by tutku             #+#    #+#             */
-/*   Updated: 2026/09/01 13:30:44 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/09/01 15:26:36 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void Form::beSigned(Bureaucrat b)
 {
 	if (_signed)
 	{
-		std::cout << BLUE << "Form is already signed!" << RESET << std::endl;
+		std::cout << YELLOW << "Form is already signed!" << RESET << std::endl;
 	}
 	else if(b.getGrade() <= _signGrade)
 	{
