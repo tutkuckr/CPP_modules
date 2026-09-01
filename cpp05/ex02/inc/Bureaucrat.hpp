@@ -3,17 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/10 16:55:54 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/04/24 17:59:43 by tutku            ###   ########.fr       */
+/*   Created: 2026/08/19 14:12:27 by tutku             #+#    #+#             */
+/*   Updated: 2026/09/01 16:21:02 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-#define BUREAUCRAT_HPP
+#ifndef EX02_BUREAUCRAT_HPP
+#define EX02_BUREAUCRAT_HPP
+
+#define RESET "\033[0m"
+#define YELLOW "\033[33m"
+#define GREEN "\033[1;32m"
+#define RED "\033[31m"
+#define PINK "\033[95m"
+#define CYAN "\033[36m"
+#define PURPLE "\033[35m"
+#define BLUE "\033[34m"
+
+#define EX02_TEST 1
 
 #include <iostream>
+#include <exception>
+#include <string>
 
 #include "Form.hpp"
 class Form;
@@ -21,24 +34,26 @@ class Form;
 class Bureaucrat
 {
 	private:
-		std::string const _name;
-		int _grade; //highest:1, lowest:150
+		const std::string	_name;
+		int					_grade;
 
 	public:
-
+		// ========================CONSTRUCTORS============================
 		Bureaucrat();
-		Bureaucrat(std::string const name, int grade);
+		~Bureaucrat();
 		Bureaucrat(const Bureaucrat &other);
 		Bureaucrat &operator=(const Bureaucrat &other);
-		~Bureaucrat();
-		
-		const std::string getName() const;
-		int getGrade() const;
-		void incrementGrade();
-		void decrementGrade();
+		Bureaucrat(const std::string name, int grade);
+
+		// ========================MEMBER FUNCTIONS========================
+		const std::string	getName() const;
+		int					getGrade() const;
+		void				incrementGrade();
+		void				decrementGrade();
 
 		void signForm(Form &form);
 
+		// ========================EXCEPTIONS==============================
 		class GradeTooHighException : public std::exception
 		{
 			public:
@@ -52,6 +67,6 @@ class Bureaucrat
 		};
 };
 
-std::ostream &operator<<(std::ostream &os, const Bureaucrat &other);
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
 
 #endif

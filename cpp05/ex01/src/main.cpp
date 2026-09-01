@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 14:12:37 by tutku             #+#    #+#             */
-/*   Updated: 2026/09/01 16:08:29 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/09/01 16:15:40 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -394,7 +394,6 @@ int main ()
 		testConstructor();
 		testBeSigned();
 		testSignForm();
-
 	}
 	return 0;
 }
