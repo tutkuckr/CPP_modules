@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+         #
+#    By: tutku <tutku@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/19 13:58:39 by tutku             #+#    #+#              #
-#    Updated: 2026/09/01 16:20:46 by tcakir-y         ###   ########.fr        #
+#    Updated: 2026/09/13 14:15:27 by tutku            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,10 @@ CPP_FLAGS = -I$(INC_DIR)
 # Source files
 SRC =	main.cpp\
 		Bureaucrat.cpp\
-		Form.cpp
+		AForm.cpp\
+		ShrubberyCreationForm.cpp\
+		RobotomyRequestForm.cpp\
+		PresidentialPardonForm.cpp
 
 # Convert source file name into object file path inside obj/
 OBJECTS = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))

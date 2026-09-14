@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 17:34:36 by tutku             #+#    #+#             */
-/*   Updated: 2026/09/01 16:25:28 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/09/14 22:02:20 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,28 +34,36 @@ class AForm
 		~AForm();
 
 		// ========================MEMBER FUNCTIONS========================
-		void		beSigned(Bureaucrat b);
+		void			beSigned(Bureaucrat b);
+		virtual void	execute(Bureaucrat const &executor) const;
+		virtual void	executeFormAction() const = 0;
 
 		// ========================GETTERS========================
-		std::string	getName() const;
-		bool		getSigned() const;
-		int			getSignGrade() const;
-		int			getExecuteGrade() const;
+		std::string		getName() const;
+		bool			getSigned() const;
+		int				getSignGrade() const;
+		int				getExecuteGrade() const;
 
 		// ========================EXCEPTIONS========================
-		class GradeTooLowException : std::exception
+		class GradeTooLowException : public std::exception
 		{
 			public:
 				const char *what() const noexcept override;
 		};
 
-		class GradeTooHighException : std::exception
+		class GradeTooHighException : public std::exception
 		{
-		public:
-			const char *what() const noexcept override;
+			public:
+				const char *what() const noexcept override;
+		};
+
+		class NotSignedException : public std::exception
+		{
+			public:
+				const char *what() const noexcept override;
 		};
 };
-	std::ostream &operator<<(std::ostream &os, const Form &form);
+	std::ostream &operator<<(std::ostream &os, const AForm &form);
 	
 	#endif
 

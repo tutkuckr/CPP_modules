@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 14:12:32 by tutku             #+#    #+#             */
-/*   Updated: 2026/09/01 16:07:22 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/09/14 22:00:10 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 // ========================CONSTRUCTORS============================
 
@@ -74,7 +74,7 @@ void Bureaucrat::decrementGrade()
 	std::cout << PINK << "[AFTER DECREMENT] " << RESET << *this << std::endl;
 }
 
-void Bureaucrat::signForm(Form &form)
+void Bureaucrat::signForm(AForm &form)
 {
 	try
 	{
@@ -89,7 +89,7 @@ void Bureaucrat::signForm(Form &form)
 					  << std::endl;
 		}
 	}
-	catch(const Form::GradeTooLowException &e)
+	catch(const AForm::GradeTooLowException &e)
 	{
 		std::cerr << this->getName()
 				  << " couldn't sign " 
@@ -104,6 +104,27 @@ void Bureaucrat::signForm(Form &form)
 				  << form.getName()
 				  << " because "
 				  << e.what() << '\n';
+	}
+}
+
+void Bureaucrat::executeForm(AForm const &form) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << getName()
+				  << " executed "
+				  << form.getName()
+				  << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << getName()
+				  << " couldn't execute "
+				  << form.getName()
+				  << " because "
+				  << e.what()
+				  << std::endl;
 	}
 }
 

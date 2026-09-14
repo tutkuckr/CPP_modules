@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 17:54:24 by tutku             #+#    #+#             */
-/*   Updated: 2026/09/01 16:23:49 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/09/14 22:05:03 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ AForm &AForm::operator=(const AForm &other)
 }
 
 AForm::AForm(const std::string name, const int signGrade, const int execGrade) :  _name(name),
-																				_signed(false),
-																				_signGrade(signGrade),
-																				_executeGrade(execGrade)
+			  _signed(false),
+			  _signGrade(signGrade),
+			  _executeGrade(execGrade)
 {
 	if (_signGrade > 150 || _executeGrade > 150)
 		throw GradeTooLowException();
@@ -68,6 +68,19 @@ void AForm::beSigned(Bureaucrat b)
 	}
 }
 
+void AForm::execute(Bureaucrat const & executor) const
+{
+	if (!_signed)
+	{
+		throw NotSignedException();
+	}
+	if (!(executor.getGrade() <= this->_executeGrade))
+	{
+		throw GradeTooLowException();
+	}
+	executeFormAction();
+}
+
 // ========================EXCEPTIONS========================
 const char *AForm::GradeTooHighException::what() const noexcept
 {
@@ -77,6 +90,11 @@ const char *AForm::GradeTooHighException::what() const noexcept
 const char *AForm::GradeTooLowException::what() const noexcept
 {
 	return ("Grade is too low!");
+}
+
+const char *AForm::NotSignedException::what() const noexcept
+{
+	return ("Form is not signed!");
 }
 
 // ========================GETTERS========================

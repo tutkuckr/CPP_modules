@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/01 16:26:52 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/09/14 21:43:35 by tutku            ###   ########.fr       */
+/*   Created: 2026/09/13 14:14:57 by tutku             #+#    #+#             */
+/*   Updated: 2026/09/14 21:44:42 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERY_CREATION_FORM_HPP
-#define SHRUBBERY_CREATION_FORM_HPP
+#ifndef ROBOTOMY_REQUEST_FORM_HPP
+#define ROBOTOMY_REQUEST_FORM_HPP
 
 #include "AForm.hpp"
-#include <fstream>
 
-#define SHRUBBERY_SIGN 145
-#define SHRUBBERY_EXEC 137
+#define ROBOTOMY_SIGN 72
+#define ROBOTOMY_EXEC 45
 
-class ShrubberyCreationForm : public AForm
+class RobotomyRequestForm : public AForm
 {
-
 	private:
 		std::string _target;
 
 	public:
-		ShrubberyCreationForm();
-		~ShrubberyCreationForm();
-		ShrubberyCreationForm(const ShrubberyCreationForm& other);
-		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
+		RobotomyRequestForm();
+		~RobotomyRequestForm();
+		RobotomyRequestForm(const RobotomyRequestForm &other);
+		RobotomyRequestForm &operator=(const RobotomyRequestForm&other);
 
-		ShrubberyCreationForm(std::string target);
-		
+		RobotomyRequestForm(std::string target);
 		void executeFormAction() const override;
 
-		// ========================GETTERS========================
 		std::string getTarget() const;
+		int getSign() const;
+		int getExec() const;
 };
 
 #endif

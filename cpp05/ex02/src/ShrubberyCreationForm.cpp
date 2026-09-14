@@ -3,28 +3,73 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 16:43:59 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/09/01 16:47:57 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/09/14 21:43:17 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
+/*
+Required grades: sign 145, exec 137
+Creates a file <target>_shrubbery in the working directory 
+and writes ASCII trees inside it.
+*/
 
-ShrubberyCreationForm::ShrubberyCreationForm()
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Default Shrubbery", SHRUBBERY_SIGN, SHRUBBERY_EXEC), _target("Default Shrubbery")
 {
 
 }
+
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
 
 }
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : AForm(other), _target(other._target)
 {
 	*this = other;
 }
-ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
+
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
 {
+	if (this != &other)
+	{
+		AForm::operator=(other);
+		this->_target = other._target;
+	}
 	return (*this);
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Default Shrubbery", SHRUBBERY_SIGN, SHRUBBERY_EXEC), _target(target)
+{
+
+}
+
+void ShrubberyCreationForm::executeFormAction() const
+{
+	std::string fileName = _target + "_shrubbery";
+
+	std::ofstream targetFile(fileName);
+	if (targetFile.is_open())
+	{
+		targetFile << "          /\\\n"
+					  "         /  \\          /\\\n"
+					  "        /****\\        /  \\       /\\\n"
+					  "       /******\\      /****\\     /  \\\n"
+					  "      /********\\    /******\\   /****\\\n"
+					  "          ||           ||        ||\n"
+					  "          ||           ||        ||\n";
+		targetFile.close();
+	}
+	else
+	{
+		std::cerr << "Error, could not open shrubbery file" << std::endl;
+	}
+}
+
+std::string ShrubberyCreationForm::getTarget() const
+{
+	return this->_target;
 }
