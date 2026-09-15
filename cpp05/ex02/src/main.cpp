@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/19 14:12:37 by tutku             #+#    #+#             */
-/*   Updated: 2026/09/14 21:53:04 by tutku            ###   ########.fr       */
+/*   Updated: 2026/09/15 12:43:09 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ static void testShrubberyFileCreate()
 
 		expect((file.is_open()), "schrubbery file created");
 		file.close();
+		//std::remove(fileName.c_str()); //to remove the file
 	}
 	catch (const std::exception &e)
 	{
@@ -144,7 +145,7 @@ static void testShrubberyFileCreateWithSpaces()
 			"shrubbery file created with spaces");
 
 		file.close();
-		std::remove(fileName.c_str());
+		//std::remove(fileName.c_str()); //to remove the file
 	}
 	catch (const std::exception &e)
 	{
@@ -187,6 +188,7 @@ static void testShrubberyFileContent()
 		expect(content == correctFileContent, "shrubbery file contains expected content");
 
 		file.close();
+		//std::remove(fileName.c_str()); //to remove the file
 	}
 	catch (const std::exception &e)
 	{
@@ -384,17 +386,17 @@ static void testExecuteUnsignedForm()
 {
 	try
 	{
-		ShrubberyCreationForm test("TEST_EXECUTE");
-		Bureaucrat executor("Executor", 1);
+		ShrubberyCreationForm testShrubbery("TEST_EXECUTE");
+		Bureaucrat testBureaucrat("Executor", 1);
 
-		test.execute(executor);
+		//didnt sign first
+		testShrubbery.execute(testBureaucrat);
 
 		expect(false, "unsigned form cannot be executed");
 	}
 	catch (const AForm::NotSignedException &e)
 	{
 		expect(true, "unsigned form cannot be executed");
-
 		std::cout << YELLOW
 				  << e.what()
 				  << RESET << std::endl;
@@ -409,18 +411,42 @@ static void testExecuteUnsignedForm()
 
 	try
 	{
-		ShrubberyCreationForm test("TEST_LIMIT");
-		Bureaucrat signer("Signer", 1);
-		Bureaucrat executor("Executor", 137);
+		ShrubberyCreationForm testShrubbery("TEST_LIMIT");
+		Bureaucrat test("test", 137);
+		
 
-		test.beSigned(signer);
-		test.execute(executor);
+		testShrubbery.beSigned(test);
+		testShrubbery.execute(test);
 
-		expect(true, "executor with exact required grade can execute");
+		expect(true, "test bureaucrat with exact required grade can execute");
 	}
 	catch (const std::exception &e)
 	{
-		expect(false, "executor with exact required grade can execute");
+		expect(false, "test bureaucrat with exact required grade can execute");
+
+		std::cerr << RED << "[UNEXPECTED EXCEPTION] "
+				  << RESET << e.what() << std::endl;
+	}
+
+	try
+	{
+		ShrubberyCreationForm testShrubbery("TEST_OUT_OF_LIMIT");
+		Bureaucrat test("test", 138); //limit is 137
+		
+
+		testShrubbery.beSigned(test);
+		testShrubbery.execute(test);
+		expect(false, "test bureaucrat with lower than required grade cannot execute");
+	}
+	catch (const AForm::GradeTooLowException &e)
+	{
+		std::cout << YELLOW << "[EXCEPTION] "
+				  << RESET << e.what() << std::endl;
+		expect(true, "bureaucrat with lower than required grade cannot execute");
+	}
+	catch (const std::exception &e)
+	{
+		expect(false, "test bureaucrat with lower than required grade cannot execute");
 
 		std::cerr << RED << "[UNEXPECTED EXCEPTION] "
 				  << RESET << e.what() << std::endl;
