@@ -6,43 +6,38 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 11:11:16 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/09/22 13:15:33 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/09/22 17:11:48 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter()
-{
+//ScalarConverter::ScalarConverter(const ScalarConverter &other)
+//{
+//	(*this) = other;
+//}
 
-}
+//ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other)
+//{
+//	(void)other;
+//	return (*this);
+//}
 
-ScalarConverter::ScalarConverter(const ScalarConverter &other)
-{
-	(*this) = other;
-}
+//ScalarConverter::~ScalarConverter()
+//{
 
-ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other)
-{
-	if (this != (&other))
-	{
-		
-	}
-	return (*this);
-}
+//}
 
-ScalarConverter::~ScalarConverter()
-{
-
-}
-
-void ScalarConverter::convert(std::string param)
+void ScalarConverter::convert(const std::string& param)
 {
 	int type = detectType(param);
 
+	std::cout << "DEBUG:\nargv[1]: " << param << std::endl;
 	switch(type)
 	{
 		case CHAR:
+			printChar(param);
+			return;
 
 		case INT:
 
@@ -51,7 +46,7 @@ void ScalarConverter::convert(std::string param)
 		case DOUBLE:
 
 		default:
-			std::cout << RED << "Invalid type!" << RESET << std::endl;
+			std::cout << RED << "Invalid type!" << RESET << std::endl; //TODO: change later
 
 	}
 	
@@ -74,4 +69,7 @@ https://www.geeksforgeeks.org/cpp/static-member-function-in-cpp/
 
 ascii table:
 https://www.ascii-code.com/
+
+disable constructor usage
+https://www.geeksforgeeks.org/cpp/explicitly-defaulted-deleted-functions-c-11/
 */

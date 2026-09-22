@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 11:11:32 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/09/22 13:16:15 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/09/22 17:03:46 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,18 @@ class ScalarConverter
 {
 	private:
 		// ========================CONSTRUCTORS============================
-		ScalarConverter();
-		ScalarConverter(const ScalarConverter &other);
-		ScalarConverter& operator=(const ScalarConverter& other);
-		~ScalarConverter();
+		ScalarConverter() = delete;
+		ScalarConverter(const ScalarConverter &other) = delete;
+		ScalarConverter& operator=(const ScalarConverter& other) = delete;
+		~ScalarConverter() = delete;
 
 	public:
 		// ========================MEMBER FUNCTIONS========================
-		static void convert(std::string param);
+		static void convert(const std::string& param);
 };
 
-int		detectType(std::string param);
-void	checkChar(std::string param);
+int		detectType(const std::string& param);
+void	printChar(const std::string& param);
 
 
 
