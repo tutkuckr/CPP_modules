@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 17:34:36 by tutku             #+#    #+#             */
-/*   Updated: 2026/09/01 11:51:07 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/09/22 11:07:06 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Bureaucrat;
 class Form
 {
 	private:
-		std::string	_name;
+		const std::string	_name;
 		bool		_signed;
 		const int	_signGrade;
 		const int	_executeGrade;

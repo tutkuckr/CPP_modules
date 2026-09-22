@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 17:34:36 by tutku             #+#    #+#             */
-/*   Updated: 2026/09/14 23:10:32 by tutku            ###   ########.fr       */
+/*   Updated: 2026/09/22 11:06:49 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Bureaucrat;
 class AForm
 {
 	private:
-		std::string	_name;
+		const std::string	_name;
 		bool		_signed;
 		const int	_signGrade;
 		const int	_executeGrade;
