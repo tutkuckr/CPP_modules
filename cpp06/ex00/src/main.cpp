@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 11:18:06 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/09/22 17:02:35 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/10/06 14:14:06 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 	
-	std::string param(argv[1]);
-	ScalarConverter::convert(param);
+	std::string literal(argv[1]);
+	ScalarConverter::convert(literal);
 	
 	return 0;
 }

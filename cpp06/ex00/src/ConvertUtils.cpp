@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convertUtils.cpp                                   :+:      :+:    :+:   */
+/*   ConvertUtils.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 13:14:11 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/10/05 01:23:13 by tutku            ###   ########.fr       */
+/*   Updated: 2026/10/06 14:24:57 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,37 +19,7 @@ void convertChar(const std::string& param)
 	
 }
 
-bool checkIfChar(const std::string& param)
-{
-	int len = param.length();
 
-	if (len == 1 && isprint(param[0]) && !isdigit(param[0]))
-	{
-		return true;
-	}
-	return false;
-}
-
-bool checkIfFloat(const std::string &param)
-{
-	
-
-	if ()
-	{
-		return true;
-	}
-	return false;
-}
-
-int detectType(const std::string& param)
-{
-
-	if (checkIfChar(param))
-		return CHAR;
-	if (checkIfFloat(param))
-		return FLOAT;
-	return ERROR;
-}
 
 /*
 how to check for
@@ -94,22 +64,3 @@ ends with f? yes
 
 → FLOAT
 */
-
-//void checkChar(std::string param)
-//{
-//	if (param.length() == 1)
-//	{
-//		if (std::isprint(param[0]))
-//		{
-//			std::cout << BLUE << "char literal: " << RESET << param << std::endl;
-//		}
-//		else
-//		{
-//			std::cout << BLUE << "char: " << RESET << RED << " Non displayable" << RESET << std::endl;
-//		}
-//	}
-//	else
-//	{
-
-//	}
-//}

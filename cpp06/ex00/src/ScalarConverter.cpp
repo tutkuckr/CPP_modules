@@ -3,24 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 11:11:16 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/10/06 09:02:23 by tutku            ###   ########.fr       */
+/*   Updated: 2026/10/06 14:23:29 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-void ScalarConverter::convert(const std::string& param)
+int detectType(const std::string& param)
 {
-	int type = detectType(param);
 
-	std::cout << "DEBUG:\nargv[1]: " << param << std::endl;
+	if (checkIfChar(param))
+		return CHAR;
+	if (checkIfFloat(param))
+		return FLOAT;
+	if (checkIfInt(param))
+		return INT;
+	if (checkIfDouble(param))
+		return DOUBLE;
+	return ERROR;
+}
+
+void ScalarConverter::convert(const std::string& literal)
+{
+	int type = detectType(literal);
+
+	std::cout << "DEBUG:\nargv[1]: " << literal << std::endl;
 	switch(type)
 	{
 		case CHAR:
-			convertChar(param);
+			convertChar(literal);
 			break;
 
 		case INT:

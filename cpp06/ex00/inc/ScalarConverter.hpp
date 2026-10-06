@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 11:11:32 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/09/30 18:36:40 by tutku            ###   ########.fr       */
+/*   Updated: 2026/10/06 14:22:41 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,14 @@ class ScalarConverter
 
 	public:
 		// ========================MEMBER FUNCTIONS========================
-		static void convert(const std::string& param);
+		static void convert(const std::string& literal);
 };
 
-int		detectType(const std::string& param);
-void	convertChar(const std::string &param);
+// ========================CONVERT UTILS========================
+void	convertChar(const std::string &literal);
+bool	checkIfChar(const std::string& param);
+bool	checkIfFloat(const std::string &param);
+bool	checkIfInt(const std::string &param);
+bool	checkIfDouble(const std::string &param);
 
 #endif
