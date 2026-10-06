@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 11:11:32 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/09/22 17:03:46 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/09/30 18:36:40 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ class ScalarConverter
 };
 
 int		detectType(const std::string& param);
-void	printChar(const std::string& param);
-
-
+void	convertChar(const std::string &param);
 
 #endif

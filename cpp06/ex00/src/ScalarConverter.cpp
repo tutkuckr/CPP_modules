@@ -3,30 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 11:11:16 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/09/22 17:11:48 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/10/06 09:02:23 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-
-//ScalarConverter::ScalarConverter(const ScalarConverter &other)
-//{
-//	(*this) = other;
-//}
-
-//ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other)
-//{
-//	(void)other;
-//	return (*this);
-//}
-
-//ScalarConverter::~ScalarConverter()
-//{
-
-//}
 
 void ScalarConverter::convert(const std::string& param)
 {
@@ -36,8 +20,8 @@ void ScalarConverter::convert(const std::string& param)
 	switch(type)
 	{
 		case CHAR:
-			printChar(param);
-			return;
+			convertChar(param);
+			break;
 
 		case INT:
 
@@ -49,7 +33,7 @@ void ScalarConverter::convert(const std::string& param)
 			std::cout << RED << "Invalid type!" << RESET << std::endl; //TODO: change later
 
 	}
-	
+
 }
 
 /*
