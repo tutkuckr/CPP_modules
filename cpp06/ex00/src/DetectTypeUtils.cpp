@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   DetectTypeUtils.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 14:24:36 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/10/06 16:24:10 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/10/09 23:56:33 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-bool checkIfChar(const std::string& param)
+bool checkIfChar(const std::string& literal)
 {
-	int len = param.length();
+	int len = literal.length();
 
-	if (len == 1 && isprint(param[0]) && !isdigit(param[0]))
+	if (len == 1 && isprint(literal[0]) && !isdigit(literal[0]))
 	{
 		return true;
 	}
@@ -27,29 +27,39 @@ bool checkIfChar(const std::string& param)
 	checkDot(), checkFatEnd()==1, checkDigits()
 	in checkDigits()-> look for - and ignore at the beginning
 */
-bool checkIfFloat(const std::string &param)
+bool checkIfFloat(const std::string &literal)
 {
-	if (checkDot(param)) //TODO:finish
-	{
+	if (literal.empty())
+		return false;
+	if (literal.back() == 'f' || literal.back() == 'F')
 		return true;
-	}
 	return false;
 }
 
-bool checkIfInt(const std::string &param)
+bool checkIfInt(const std::string &literal)
 {
-	if (checkDot(param)) //TODO:finish
+	size_t len = literal.length();
+	size_t i = 0;
+
+	if (len == 0)
+		return false;
+	if (literal[i] == '+' || literal[i] == '-')
+		i++;
+	if (i == len)
+		return false;
+
+	while (i < literal.length())
 	{
-		return true;
+		if (!isdigit(static_cast<unsigned char>(literal[i])))
+			return false;
+		i++;
 	}
-	return false;
+	return true;
 }
 
-bool checkIfDouble(const std::string &param)
+bool checkIfDouble(const std::string &literal)
 {
-	if (checkDot(param)) //TODO:finish
-	{
-		return true;
-	}
-	return false;
+	if (literal.empty())
+		return false;
+	return true;
 }

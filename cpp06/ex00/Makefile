@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+         #
+#    By: tutku <tutku@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/19 13:58:39 by tutku             #+#    #+#              #
-#    Updated: 2026/10/06 14:17:09 by tcakir-y         ###   ########.fr        #
+#    Updated: 2026/10/07 17:25:31 by tutku            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ CPP_FLAGS = -I$(INC_DIR)
 # Source files
 SRC =	main.cpp\
 		ScalarConverter.cpp\
-		ConvertUtils.cpp
+		ConvertUtils.cpp\
+		DetectTypeUtils.cpp
 
 # Convert source file name into object file path inside obj/
 OBJECTS = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))

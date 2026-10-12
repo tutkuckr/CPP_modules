@@ -3,25 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 11:11:16 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/10/06 14:23:29 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/10/09 18:50:03 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-int detectType(const std::string& param)
+int detectType(const std::string& literal)
 {
-
-	if (checkIfChar(param))
+	if (literal.empty())
+		return ERROR;
+	if (checkIfChar(literal))
 		return CHAR;
-	if (checkIfFloat(param))
+	if (checkIfFloat(literal))
 		return FLOAT;
-	if (checkIfInt(param))
+	if (checkIfInt(literal))
 		return INT;
-	if (checkIfDouble(param))
+	if (checkIfDouble(literal))
 		return DOUBLE;
 	return ERROR;
 }
@@ -29,26 +30,38 @@ int detectType(const std::string& param)
 void ScalarConverter::convert(const std::string& literal)
 {
 	int type = detectType(literal);
+	Converted results;
 
-	std::cout << "DEBUG:\nargv[1]: " << literal << std::endl;
 	switch(type)
 	{
 		case CHAR:
-			convertChar(literal);
+			convertChar(literal, results);
 			break;
 
 		case INT:
+			convertInt(literal, results);
+			break;
 
 		case FLOAT:
+			break;
 
 		case DOUBLE:
+			break;
 
 		default:
-			std::cout << RED << "Invalid type!" << RESET << std::endl; //TODO: change later
-
-	}
-
+			std::cout << "default" << std::endl;
+			break;
+		}
+	printMessage(results);
 }
+
+/*
+0–31   → Non displayable
+32–126 → displayable
+127    → Non displayable
+>127   → outside standard ASCII range
+<0     → outside standard ASCII range
+*/
 
 /*
 STEPS:

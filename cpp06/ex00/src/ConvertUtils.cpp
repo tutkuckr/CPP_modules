@@ -1,26 +1,96 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ConvertUtils.cpp                                   :+:      :+:    :+:   */
+/*   convertUtils.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 13:14:11 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/10/06 14:24:57 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/10/09 23:20:56 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+#include <iomanip>
 
-//TODO: create one main printer function!
-void convertChar(const std::string& param)
+void printMessage(const Converted& results)
 {
-	std::cout << BLUE << "char literal: " << RESET << param << std::endl;
+	if (results.charNonDisplayable)
+	{
+		std::cout << BLUE << "char: " << RESET
+				  << "Non displayable" << std::endl;
+	}
+	else if (results.charImpossible)
+	{
+		std::cout << BLUE << "char: " << RESET
+				  << "impossible" << std::endl;
+	}
+	else
+	{
+		std::cout << BLUE << "char: " << RESET 
+				  << "'" << results.charConverted << "'" << std::endl;
+	}
+
+	std::cout << BLUE << "int: " << RESET 
+			  << results.intConverted << std::endl;
+
+	std::cout << BLUE << "float: " << RESET 
+			  << std::fixed << std::setprecision(1)
+			  << results.floatConverted << "f" << std::endl;
+
+	std::cout << BLUE << "double: " << RESET 
+			 << results.doubleConverted << std::endl;
+}
+
+void convertChar(const std::string& literal, Converted& results)
+{
+	char charVal = literal[0];
+	results.charConverted = charVal;
+	results.intConverted = static_cast<int>(charVal);
+	results.floatConverted = static_cast<float>(charVal);
+	results.doubleConverted = static_cast<double>(charVal);
+}
+
+void convertInt(const std::string &literal, Converted &results)
+{
+	std::cout << "trying to convert int" << std::endl;
+	try
+	{
+		results.intConverted = std::stoi(literal);
+		std::cout << "int value" << results.intConverted << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << "overflowwww" << std::endl;
+		std::cerr << e.what() << '\n';
+		return;
+	}
+	convertIntToChar(results);
+	results.floatConverted = static_cast<float>(results.intConverted);
+	results.doubleConverted = static_cast<double>(results.intConverted);
+}
+
+void convertIntToChar(Converted& results)
+{
+	if (!(results.intConverted >= 0 && results.intConverted <= 127)) // not in ascii table range
+	{
+		results.charImpossible = true;
+	}
+	else if (std::isprint(results.intConverted))
+	{
+		results.charConverted = static_cast<char>(results.intConverted);
+	}
+	else //non displayable
+	{
+		results.charNonDisplayable = true;
+	}
 	
 }
 
-
-
+/*
+stoi
+https://www.xqa.io/learn/cpp/intermediate/c-string-to-int-and-vice-versa
+*/
 /*
 how to check for
 *****
@@ -37,7 +107,7 @@ checkDot(), checkFatEnd()==0, checkDigits()
 ******
 int
 checkSign() -> + -
-checkDot()==0, checkFatEnd()==0, checkDigits()
+checkDot()==0, checkFatEnd()==0, checkDigits()(all number)
 
 
 input 65

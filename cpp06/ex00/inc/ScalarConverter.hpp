@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 11:11:32 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/10/06 14:22:41 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/10/09 18:48:00 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,24 @@
 #define PURPLE "\033[35m"
 #define BLUE "\033[34m"
 
+#define TEST_MODE 1 //Set it to 0 to disable testing
+
 #define ERROR -1
 #define CHAR 0
 #define INT 1
 #define FLOAT 2
 #define DOUBLE 3
+
+struct Converted
+{
+	char	charConverted = 0;
+	int		intConverted = 0;
+	float	floatConverted = 0.0f;
+	double	doubleConverted = 0.0;
+
+	bool charNonDisplayable = false;
+	bool charImpossible = false;
+};
 
 class ScalarConverter
 {
@@ -45,10 +58,17 @@ class ScalarConverter
 };
 
 // ========================CONVERT UTILS========================
-void	convertChar(const std::string &literal);
-bool	checkIfChar(const std::string& param);
-bool	checkIfFloat(const std::string &param);
-bool	checkIfInt(const std::string &param);
-bool	checkIfDouble(const std::string &param);
+void	convertChar(const std::string &literal, Converted &results);
+void	convertInt(const std::string &literal, Converted &results);
+
+void	printMessage(const Converted &results);
+void	convertIntToChar(Converted &results);
+
+// ========================DETECT TYPES========================
+bool	checkIfChar(const std::string &literal);
+bool	checkIfFloat(const std::string &literal);
+bool	checkIfInt(const std::string &literal);
+bool	checkIfDouble(const std::string &literal);
+
 
 #endif
