@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 11:11:16 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/10/09 18:50:03 by tutku            ###   ########.fr       */
+/*   Updated: 2026/10/20 10:45:43 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int detectType(const std::string& literal)
 		return INT;
 	if (checkIfDouble(literal))
 		return DOUBLE;
+	//TODO: ADD CHECKER FOR NAN
 	return ERROR;
 }
 
@@ -32,25 +33,35 @@ void ScalarConverter::convert(const std::string& literal)
 	int type = detectType(literal);
 	Converted results;
 
+	if (TEST_MODE)
+		std::cout << GREEN << "Value entered: " << RESET << literal  << std::endl;
 	switch(type)
 	{
 		case CHAR:
+			if (TEST_MODE)
+				std::cout << "Type is CHAR" << std::endl;
 			convertChar(literal, results);
 			break;
 
 		case INT:
+			if (TEST_MODE)
+					std::cout << "Type is INT" << std::endl;
 			convertInt(literal, results);
 			break;
 
 		case FLOAT:
+			if (TEST_MODE)
+					std::cout << "Type is FLOAT" << std::endl;
 			break;
 
 		case DOUBLE:
+			if (TEST_MODE)
+				std::cout << "Type is DOUBLE" << std::endl;
 			break;
 
-		default:
-			std::cout << "default" << std::endl;
-			break;
+		default: //TODO: add cases for nan  etc.
+			std::cerr << "Error: Invalid literal" << std::endl;
+			return;
 		}
 	printMessage(results);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convertUtils.cpp                                   :+:      :+:    :+:   */
+/*   ConvertUtils.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 13:14:11 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/10/09 23:20:56 by tutku            ###   ########.fr       */
+/*   Updated: 2026/10/20 11:55:29 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 
 void printMessage(const Converted& results)
 {
-	if (results.charNonDisplayable)
-	{
-		std::cout << BLUE << "char: " << RESET
-				  << "Non displayable" << std::endl;
-	}
-	else if (results.charImpossible)
+	if (results.charImpossible)
 	{
 		std::cout << BLUE << "char: " << RESET
 				  << "impossible" << std::endl;
+	}
+	else if (results.charNonDisplayable)
+	{
+		std::cout << BLUE << "char: " << RESET
+				  << "Non displayable" << std::endl;
 	}
 	else
 	{
@@ -31,8 +31,16 @@ void printMessage(const Converted& results)
 				  << "'" << results.charConverted << "'" << std::endl;
 	}
 
-	std::cout << BLUE << "int: " << RESET 
-			  << results.intConverted << std::endl;
+	if (results.intImpossible)
+	{
+		std::cout << BLUE << "int: " << RESET
+				  << "impossible" << std::endl;
+	}
+	else
+	{
+		std::cout << BLUE << "int: " << RESET 
+				  << results.intConverted << std::endl;
+	}
 
 	std::cout << BLUE << "float: " << RESET 
 			  << std::fixed << std::setprecision(1)
@@ -45,7 +53,18 @@ void printMessage(const Converted& results)
 void convertChar(const std::string& literal, Converted& results)
 {
 	char charVal = literal[0];
-	results.charConverted = charVal;
+	
+	if (!(results.intConverted >= 0 && results.intConverted <= 127)) // not in ascii table range
+	{
+		results.charImpossible = true;
+	}
+	else if (!(std::isprint(results.intConverted)))//non displayable
+	{
+		results.charNonDisplayable = true;
+	}
+	else
+		results.charConverted = charVal;
+
 	results.intConverted = static_cast<int>(charVal);
 	results.floatConverted = static_cast<float>(charVal);
 	results.doubleConverted = static_cast<double>(charVal);
@@ -53,21 +72,21 @@ void convertChar(const std::string& literal, Converted& results)
 
 void convertInt(const std::string &literal, Converted &results)
 {
-	std::cout << "trying to convert int" << std::endl;
-	try
+	results.converted = std::stoll(literal);
+
+	if (checkIntOverflow(results))
 	{
-		results.intConverted = std::stoi(literal);
-		std::cout << "int value" << results.intConverted << std::endl;
+		results.charImpossible = true;
+		results.floatConverted = static_cast<float>(results.converted);
+		results.doubleConverted = static_cast<double>(results.converted);
 	}
-	catch(const std::exception& e)
+	else
 	{
-		std::cout << "overflowwww" << std::endl;
-		std::cerr << e.what() << '\n';
-		return;
+		results.intConverted = results.converted;
+		convertIntToChar(results);
+		results.floatConverted = static_cast<float>(results.intConverted);
+		results.doubleConverted = static_cast<double>(results.intConverted);
 	}
-	convertIntToChar(results);
-	results.floatConverted = static_cast<float>(results.intConverted);
-	results.doubleConverted = static_cast<double>(results.intConverted);
 }
 
 void convertIntToChar(Converted& results)
@@ -84,7 +103,16 @@ void convertIntToChar(Converted& results)
 	{
 		results.charNonDisplayable = true;
 	}
-	
+}
+
+bool checkIntOverflow(Converted &results)
+{
+	if (results.converted > INT_MAX || results.converted < INT_MIN)
+	{
+		results.intImpossible = true;
+		return true;
+	}
+	return false;
 }
 
 /*

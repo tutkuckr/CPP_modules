@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 11:11:32 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/10/09 18:48:00 by tutku            ###   ########.fr       */
+/*   Updated: 2026/10/20 12:19:41 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define SCALAR_CONVERTER_HPP
 
 #include <iostream>
+#include <climits>
 
 #define RESET "\033[0m"
 #define YELLOW "\033[33m"
@@ -34,13 +35,15 @@
 
 struct Converted
 {
-	char	charConverted = 0;
-	int		intConverted = 0;
-	float	floatConverted = 0.0f;
-	double	doubleConverted = 0.0;
+	char			charConverted = 0;
+	int				intConverted = 0;
+	float			floatConverted = 0.0f;
+	double			doubleConverted = 0.0;
+	long long int	converted = 0;
 
-	bool charNonDisplayable = false;
-	bool charImpossible = false;
+	bool			charNonDisplayable = false;
+	bool			charImpossible = false;
+	bool			intImpossible = false;
 };
 
 class ScalarConverter
@@ -60,6 +63,7 @@ class ScalarConverter
 // ========================CONVERT UTILS========================
 void	convertChar(const std::string &literal, Converted &results);
 void	convertInt(const std::string &literal, Converted &results);
+bool	checkIntOverflow(Converted &results);
 
 void	printMessage(const Converted &results);
 void	convertIntToChar(Converted &results);
