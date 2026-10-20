@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 13:14:11 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/10/20 11:55:29 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/10/20 15:24:18 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,45 +50,6 @@ void printMessage(const Converted& results)
 			 << results.doubleConverted << std::endl;
 }
 
-void convertChar(const std::string& literal, Converted& results)
-{
-	char charVal = literal[0];
-	
-	if (!(results.intConverted >= 0 && results.intConverted <= 127)) // not in ascii table range
-	{
-		results.charImpossible = true;
-	}
-	else if (!(std::isprint(results.intConverted)))//non displayable
-	{
-		results.charNonDisplayable = true;
-	}
-	else
-		results.charConverted = charVal;
-
-	results.intConverted = static_cast<int>(charVal);
-	results.floatConverted = static_cast<float>(charVal);
-	results.doubleConverted = static_cast<double>(charVal);
-}
-
-void convertInt(const std::string &literal, Converted &results)
-{
-	results.converted = std::stoll(literal);
-
-	if (checkIntOverflow(results))
-	{
-		results.charImpossible = true;
-		results.floatConverted = static_cast<float>(results.converted);
-		results.doubleConverted = static_cast<double>(results.converted);
-	}
-	else
-	{
-		results.intConverted = results.converted;
-		convertIntToChar(results);
-		results.floatConverted = static_cast<float>(results.intConverted);
-		results.doubleConverted = static_cast<double>(results.intConverted);
-	}
-}
-
 void convertIntToChar(Converted& results)
 {
 	if (!(results.intConverted >= 0 && results.intConverted <= 127)) // not in ascii table range
@@ -103,16 +64,6 @@ void convertIntToChar(Converted& results)
 	{
 		results.charNonDisplayable = true;
 	}
-}
-
-bool checkIntOverflow(Converted &results)
-{
-	if (results.converted > INT_MAX || results.converted < INT_MIN)
-	{
-		results.intImpossible = true;
-		return true;
-	}
-	return false;
 }
 
 /*

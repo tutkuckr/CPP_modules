@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 11:11:16 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/10/20 10:45:43 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/10/20 15:29:42 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,13 @@ void ScalarConverter::convert(const std::string& literal)
 		case FLOAT:
 			if (TEST_MODE)
 					std::cout << "Type is FLOAT" << std::endl;
+			convertFloat(literal, results);
 			break;
 
 		case DOUBLE:
 			if (TEST_MODE)
 				std::cout << "Type is DOUBLE" << std::endl;
+			convertDouble(literal, results);
 			break;
 
 		default: //TODO: add cases for nan  etc.

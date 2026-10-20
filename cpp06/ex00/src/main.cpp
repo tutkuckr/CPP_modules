@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 11:18:06 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/10/20 12:20:18 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/10/20 15:06:08 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void testChar()
 	std::cout << std::endl;
 	ScalarConverter::convert("");
 	std::cout << std::endl;
-	//ScalarConverter::convert("\0"); // non displayable
-	//std::cout << std::endl;
+	ScalarConverter::convert("\0"); // non displayable
+	std::cout << std::endl;
 	//ScalarConverter::convert("nan"); // impossible
 	//std::cout << std::endl;
 }
