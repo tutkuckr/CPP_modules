@@ -6,7 +6,7 @@
 #    By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/19 13:58:39 by tutku             #+#    #+#              #
-#    Updated: 2026/10/20 15:29:12 by tcakir-y         ###   ########.fr        #
+#    Updated: 2026/10/20 17:06:20 by tcakir-y         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRC =	main.cpp\
 		Converters.cpp\
 		ConvertUtils.cpp\
 		DetectTypes.cpp\
+		printMessage.cpp\
 		ScalarConverter.cpp
 
 # Convert source file name into object file path inside obj/

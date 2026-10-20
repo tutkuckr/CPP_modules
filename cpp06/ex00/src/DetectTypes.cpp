@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 14:24:36 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/10/20 15:54:23 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/10/20 17:05:11 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool checkIfChar(const std::string& literal)
 {
-	int len = literal.length();
+	size_t len = literal.length();
 
 	if (len == 1 && isprint(literal[0]) && !isdigit(literal[0]))
 	{
@@ -29,25 +29,48 @@ bool checkIfChar(const std::string& literal)
 */
 bool checkIfFloat(const std::string &literal)
 {
+	size_t i = 0;
+	bool hasDot = false;
+
 	if (literal.empty())
 		return false;
-	if (literal.back() == 'f' || literal.back() == 'F')
-		return true;
+	if (literal[i] == '+' || literal[i] == '-')
+		i++;
+	if (i == literal.length())
+		return false;
+	while (i < literal.length() - 1)
+	{
+		if (!isdigit(static_cast<unsigned char>(literal[i])))
+		{
+			if (literal[i] == '.')
+			{
+				if (hasDot)
+					return false;
+				hasDot = true;
+			}
+			else
+				return false;
+		}
+		i++;
+	}
+	if (literal[i] == 'f' || literal[i] == 'F')
+	{	
+		if (hasDot)
+			return true;
+	}
 	return false;
 }
 
 bool checkIfInt(const std::string &literal)
 {
-	size_t len = literal.length();
 	size_t i = 0;
 
-	if (len == 0)
+	if (literal.length() == 0)
 		return false;
 	if (literal[i] == '+' || literal[i] == '-')
 		i++;
-	if (i == len)
+	if (i == literal.length())
 		return false;
-
 	while (i < literal.length())
 	{
 		if (!isdigit(static_cast<unsigned char>(literal[i])))
@@ -59,7 +82,29 @@ bool checkIfInt(const std::string &literal)
 
 bool checkIfDouble(const std::string &literal)
 {
+	size_t i = 0;
+	bool hasDot = false;
+
 	if (literal.empty())
 		return false;
+	if (literal[i] == '+' || literal[i] == '-')
+		i++;
+	if (i == literal.length())
+		return false;
+	while (i < literal.length())
+	{
+		if (!isdigit(static_cast<unsigned char>(literal[i])))
+		{
+			if (literal[i] == '.')
+			{
+				if (hasDot)
+					return false;
+				hasDot = true;
+			}
+			else
+				return false;
+		}
+		i++;
+	}
 	return true;
 }
