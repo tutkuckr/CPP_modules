@@ -6,7 +6,7 @@
 /*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 11:11:32 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/10/20 15:27:42 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/10/20 16:16:58 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define SCALAR_CONVERTER_HPP
 
 #include <iostream>
+#include <iomanip>
 #include <climits>
 
 #define RESET "\033[0m"
@@ -44,6 +45,10 @@ struct Converted
 	bool			charNonDisplayable = false;
 	bool			charImpossible = false;
 	bool			intImpossible = false;
+
+	bool			hasDot = false;
+	bool			hasF = false;
+	bool			hasOnlyDigits = false; //?
 };
 
 class ScalarConverter
@@ -67,7 +72,6 @@ void	convertFloat(const std::string &literal, Converted &results);
 void	convertDouble(const std::string &literal, Converted &results);
 
 // ========================CONVERT UTILS========================
-void	printMessage(const Converted &results);
 void	convertIntToChar(Converted &results);
 
 // ========================DETECT TYPES========================
@@ -76,5 +80,8 @@ bool	checkIfFloat(const std::string &literal);
 bool	checkIfInt(const std::string &literal);
 bool	checkIfDouble(const std::string &literal);
 
+
+// ========================PRINT MESSAGE========================
+void	printMessage(const Converted &results);
 
 #endif
