@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 11:11:32 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/10/20 16:16:58 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/10/29 00:57:09 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include <iostream>
 #include <iomanip>
 #include <climits>
+#include <sstream>
+#include <cmath>
+#include <string>
 
 #define RESET "\033[0m"
 #define YELLOW "\033[33m"
@@ -33,22 +36,28 @@
 #define INT 1
 #define FLOAT 2
 #define DOUBLE 3
+#define PSEUDO 4
 
 struct Converted
 {
+	int				type = -1;
+
+	std::string		literal = "";
+	long double		sharedValue = 0;
+
 	char			charConverted = 0;
 	int				intConverted = 0;
 	float			floatConverted = 0.0f;
 	double			doubleConverted = 0.0;
-	long long int	converted = 0;
 
 	bool			charNonDisplayable = false;
 	bool			charImpossible = false;
 	bool			intImpossible = false;
+	bool			floatImpossible = false;
+	bool			doubleImpossible = false;
 
-	bool			hasDot = false;
-	bool			hasF = false;
-	bool			hasOnlyDigits = false; //?
+	char			pseudoSign = '\0';
+	int				precision = 1;
 };
 
 class ScalarConverter
@@ -66,10 +75,10 @@ class ScalarConverter
 };
 
 // ========================CONVERTERS========================
-void	convertChar(const std::string &literal, Converted &results);
-void	convertInt(const std::string &literal, Converted &results);
-void	convertFloat(const std::string &literal, Converted &results);
-void	convertDouble(const std::string &literal, Converted &results);
+void	convertChar(Converted &results);
+void	convertInt(Converted &results);
+void	convertFloat(Converted &results);
+void	convertDouble(Converted &results);
 
 // ========================CONVERT UTILS========================
 void	convertIntToChar(Converted &results);
@@ -79,9 +88,13 @@ bool	checkIfChar(const std::string &literal);
 bool	checkIfFloat(const std::string &literal);
 bool	checkIfInt(const std::string &literal);
 bool	checkIfDouble(const std::string &literal);
-
+bool	checkIfPseudo(const std::string &literal);
 
 // ========================PRINT MESSAGE========================
 void	printMessage(const Converted &results);
+void calcPrecision(Converted &results);
+
+// ========================TESTER========================
+void initTest();
 
 #endif

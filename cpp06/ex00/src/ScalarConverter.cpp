@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 11:11:16 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/10/20 15:29:42 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/10/29 01:00:55 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,47 +24,74 @@ int detectType(const std::string& literal)
 		return INT;
 	if (checkIfDouble(literal))
 		return DOUBLE;
-	//TODO: ADD CHECKER FOR NAN
+	if (checkIfPseudo(literal))
+		return PSEUDO;
+	// TODO: ADD CHECKER FOR NAN
 	return ERROR;
 }
 
-void ScalarConverter::convert(const std::string& literal)
+bool calcSharedValue(const std::string &literal, Converted &results)
 {
-	int type = detectType(literal);
-	Converted results;
+	try
+	{	
+		switch (results.type)
+		{
+			case CHAR:
+				results.sharedValue = static_cast<unsigned char>(literal[0]);
+				break;
 
-	if (TEST_MODE)
-		std::cout << GREEN << "Value entered: " << RESET << literal  << std::endl;
-	switch(type)
-	{
-		case CHAR:
-			if (TEST_MODE)
-				std::cout << "Type is CHAR" << std::endl;
-			convertChar(literal, results);
-			break;
+			case INT:
+				results.sharedValue = std::stold(literal);
+				if (results.sharedValue == 0)
+					results.sharedValue = 0;
+				break;
 
-		case INT:
-			if (TEST_MODE)
-					std::cout << "Type is INT" << std::endl;
-			convertInt(literal, results);
-			break;
+			case FLOAT:
+				results.sharedValue = std::stof(literal);
+				break;
 
-		case FLOAT:
-			if (TEST_MODE)
-					std::cout << "Type is FLOAT" << std::endl;
-			convertFloat(literal, results);
-			break;
+			case DOUBLE:
+				results.sharedValue = std::stod(literal);
+				break;
 
-		case DOUBLE:
-			if (TEST_MODE)
-				std::cout << "Type is DOUBLE" << std::endl;
-			convertDouble(literal, results);
-			break;
+			case PSEUDO:
+				if (literal.back() == 'f')
+					results.sharedValue = std::stof(literal);
+				else
+					results.sharedValue = std::stod(literal);
+				if (literal.front() == '+' || literal.front() == '-')
+					results.pseudoSign = literal[0];
+				break;
 
-		default: //TODO: add cases for nan  etc.
-			std::cerr << "Error: Invalid literal" << std::endl;
-			return;
+			default: // TODO: add cases for nan  etc.
+				std::cerr << "Error: Invalid literal" << std::endl;
+				return false;
 		}
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << "Error: " << e.what() << std::endl;
+		return false;
+	}
+	return true;
+}
+
+void ScalarConverter::convert(const std::string &literal)
+{
+	Converted results;
+	
+	results.literal = literal;
+	calcPrecision(results);
+	results.type = detectType(literal);
+
+	if (!calcSharedValue(literal, results))
+		return;
+
+	convertChar(results);
+	convertInt(results);
+	convertFloat(results);
+	convertDouble(results);
+
 	printMessage(results);
 }
 

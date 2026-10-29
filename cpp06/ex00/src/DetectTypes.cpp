@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DetectTypes.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 14:24:36 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/10/20 17:05:11 by tcakir-y         ###   ########.fr       */
+/*   Updated: 2026/10/29 00:19:07 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ bool checkIfChar(const std::string& literal)
 {
 	size_t len = literal.length();
 
-	if (len == 1 && isprint(literal[0]) && !isdigit(literal[0]))
+	if (len == 1 
+		&& std::isprint(static_cast<unsigned char>(literal[0]))
+		&& !std::isdigit(static_cast<unsigned char>(literal[0])))
 	{
 		return true;
 	}
@@ -31,6 +33,7 @@ bool checkIfFloat(const std::string &literal)
 {
 	size_t i = 0;
 	bool hasDot = false;
+	bool hasDigit = false;
 
 	if (literal.empty())
 		return false;
@@ -40,7 +43,9 @@ bool checkIfFloat(const std::string &literal)
 		return false;
 	while (i < literal.length() - 1)
 	{
-		if (!isdigit(static_cast<unsigned char>(literal[i])))
+		if (isdigit(static_cast<unsigned char>(literal[i])))
+			hasDigit = true;
+		else
 		{
 			if (literal[i] == '.')
 			{
@@ -54,8 +59,8 @@ bool checkIfFloat(const std::string &literal)
 		i++;
 	}
 	if (literal[i] == 'f' || literal[i] == 'F')
-	{	
-		if (hasDot)
+	{
+		if (hasDot && hasDigit)
 			return true;
 	}
 	return false;
@@ -107,4 +112,15 @@ bool checkIfDouble(const std::string &literal)
 		i++;
 	}
 	return true;
+}
+
+bool checkIfPseudo(const std::string &literal)
+{
+	return (literal == "inf" 
+	 || literal == "+inf" 
+	 || literal == "-inf" 
+	 || literal == "nan" 
+	 || literal == "nanf"
+	 || literal == "+inff"
+	 || literal == "-inff");
 }
