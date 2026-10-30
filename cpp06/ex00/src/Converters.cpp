@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 15:21:21 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/10/28 22:45:27 by tutku            ###   ########.fr       */
+/*   Updated: 2026/10/30 02:09:17 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,70 +83,3 @@ void convertDouble(Converted &results)
 	}
 	results.doubleConverted = static_cast<double>(results.sharedValue);
 }
-
-
-// void convertChar(const std::string& literal, Converted& results)
-// {
-// 	char charVal = literal[0];
-	
-// 	if (!(results.intConverted >= 0 && results.intConverted <= 127)) // not in ascii table range
-// 	{
-// 		results.charImpossible = true;
-// 	}
-// 	else if (!(std::isprint(results.intConverted)))//non displayable
-// 	{
-// 		results.charNonDisplayable = true;
-// 	}
-// 	else
-// 		results.charConverted = charVal;
-
-// 	results.intConverted = static_cast<int>(charVal);
-// 	results.floatConverted = static_cast<float>(charVal);
-// 	results.doubleConverted = static_cast<double>(charVal);
-// }
-
-// void convertInt(const std::string &literal, Converted &results)
-// {
-// 	try
-// 	{
-// 		results.converted = std::stoll(literal);
-// 	}
-// 	catch (const std::exception &e)
-// 	{
-// 		std::cout << "Error: " << e.what() << std::endl;
-
-// 		results.charImpossible = true;
-// 		results.intImpossible = true;
-
-// 		//check float and double
-// 		convertToFloat()
-// 		return;
-// 	}
-// 	results.intConverted = results.converted;
-// 	convertIntToChar(results);
-// 	results.floatConverted = static_cast<float>(results.intConverted);
-// 	results.doubleConverted = static_cast<double>(results.intConverted);
-	
-// }
-
-// void convertFloat(const std::string &literal, Converted &results)
-// {
-	
-// 	try
-// 	{
-// 		results.floatConverted = std::stof(literal);
-// 	}
-// 	catch(const std::exception& e)
-// 	{
-// 		std::cerr << e.what() << '\n';
-// 		results.floatImpossible = true;
-// 	}
-	
-// }
-
-// void convertDouble(const std::string &literal, Converted &results)
-// {
-// 	results.converted = std::stod(literal);
-	
-// }
-

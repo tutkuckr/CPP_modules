@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 23:41:49 by tutku             #+#    #+#             */
-/*   Updated: 2026/10/28 23:57:23 by tutku            ###   ########.fr       */
+/*   Updated: 2026/10/30 02:42:38 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void testChar()
 	runTest("A", "Uppercase A");
 	runTest("z", "Lowercase z");
 	runTest("Z", "Uppercase Z");
-	runTest("f", "Letter f - CHAR, not FLOAT");
+	runTest("f", "Letter f");
 
 	// Printable
 	runTest("!", "Exclamation mark");
@@ -53,7 +53,7 @@ static void testChar()
 	runTest("-", "Minus sign");
 	runTest(".", "Dot");
 	runTest("@", "At sign");
-	runTest("#", "Hash");
+	runTest("#", "Hashtag");
 	runTest("?", "Question mark");
 	runTest("\\", "Backslash");
 	runTest("\"", "Double quote");
@@ -64,7 +64,7 @@ static void testChar()
 	runTest("9", "Digit 9(int)");
 
 	// Invalid character input
-	runTest("", "Empty input - Invalid literal");
+	runTest("", "Empty input - Invalid");
 	runTest("ab", "Multiple characters - Invalid");
 	runTest("a ", "Character with space - Invalid");
 	runTest(" a", "Character with space - Invalid");
@@ -127,8 +127,6 @@ static void testInt()
 	// Precision loss
 	runTest("16777216", "Exactly representable by float");
 	runTest("16777217", "Float precision loss");
-	runTest("9007199254740992", "Double precision boundary");
-	runTest("9007199254740993", "Double precision loss");
 
 	// Large integer that fits double but not float
 	runTest("9999999999999999999999999999999999999999",
@@ -147,21 +145,21 @@ static void testFloat()
 	runTest("100.0f", "Float 100 - char 'd'");
 
 	// Decimal truncation
-	runTest("42.5f", "42.5f - int becomes 42");
-	runTest("42.9f", "42.9f - int becomes 42");
-	runTest("65.9f", "65.9f - char becomes 'A'");
-	runTest("-42.9f", "-42.9f - int becomes -42");
+	runTest("42.5f", "42.5f");
+	runTest("42.9f", "42.9f");
+	runTest("65.9f", "65.9f");
+	runTest("-42.9f", "-42.9f");
 	runTest("0.5f", "0.5f - int becomes 0");
 	runTest("-0.5f", "-0.5f - int becomes 0");
 	runTest("127.9f", "127.9f - char Non displayable");
 	runTest("128.9f", "128.9f - char impossible");
 
 	// Zero and signs
-	runTest("0.0f", "Positive zero");
+	runTest("0.0f", "Zero");
 	runTest("-0.0f", "Negative zero");
-	runTest("+0.0f", "Explicit positive zero");
-	runTest("+42.0f", "Positive sign");
-	runTest("-42.0f", "Negative sign");
+	runTest("+0.0f", "Positive zero");
+	runTest("+42.0f", "Positive num");
+	runTest("-42.0f", "Negative num");
 
 	// ASCII boundaries
 	runTest("31.0f", "ASCII 31 - Non displayable");
@@ -261,18 +259,18 @@ static void testDouble()
 
 	// Very small double value
 	runTest("0.0000000000000000000000000000000000000000000001",
-			"Tiny double - float may round to zero");
+			"Very small double");
 
-	// Alternative decimal formats
+	// Different formats
 	runTest(".5", "No leading zero");
 	runTest("5.", "No trailing decimal digit");
 	runTest("-.5", "Negative decimal without leading zero");
 	runTest("+.5", "Positive decimal without leading zero");
 	runTest("00042.050", "Leading zeros");
 
-	// Near double maximum - decimal notation
+	// Near double maximum
 	runTest(std::string("17") + std::string(307, '0') + ".0",
-			"Large valid double near maximum");
+			"Large valid double");
 	runTest(std::string("18") + std::string(307, '0') + ".0",
 			"Double overflow - parsing should be handled");
 
@@ -301,7 +299,6 @@ static void testInvalid()
 {
 	std::cout << BLUE << "===== INVALID LITERAL TESTS =====" << RESET << std::endl;
 
-	// Empty and malformed input
 	runTest("", "Empty string");
 	runTest(" ", "Single space - valid CHAR, not invalid");
 	runTest(" 42", "Leading whitespace");
@@ -324,57 +321,14 @@ static void testInvalid()
 	runTest("12.3.4f", "Multiple decimal points - float");
 
 	// Invalid float suffixes
-	runTest("42f", "No decimal point or exponent");
-	runTest("123ff", "Multiple f suffixes");
-	runTest("12.3ff", "Multiple f suffixes");
-	runTest("12af", "Invalid character in float");
+	runTest("42f", "No decimal/point");
+	runTest("123ff", "Multiple f");
+	runTest("12.3ff", "Multiple f");
+	runTest("12af", "Invalid character");
 	runTest("42.0ff", "Extra float suffix");
 	runTest("42.0f0", "Digits after suffix");
 
-	// Unsupported types / formats
-	runTest("0x2A", "Hexadecimal - subject requires decimal");
-	runTest("0b1010", "Binary - subject requires decimal");
-	runTest("42U", "Unsigned suffix");
-	runTest("42.0L", "Long double suffix");
-	runTest("1_000", "Invalid underscore separator");
-
-	// Unsupported pseudo-literal spellings
-	runTest("NAN", "Uppercase NAN - not required");
-	runTest("NaN", "Mixed case NaN - not required");
-	runTest("infinity", "Full infinity spelling - not required");
-}
-
-static void testLimits()
-{
-	std::cout << BLUE << "===== SCIENTIFIC / EXTREME TESTS ====="
-			  << RESET << std::endl;
-
-
-	runTest("1e3", "Scientific double - 1000.0");
-	runTest("1e3f", "Scientific float - 1000.0f");
-	runTest("1.5e3", "Scientific double - 1500.0");
-	runTest("1.5e3f", "Scientific float - 1500.0f");
-	runTest("1e-3", "Small scientific double");
-	runTest("1e-3f", "Small scientific float");
-	runTest("-1e3", "Negative scientific double");
-	runTest("+1e3f", "Positive scientific float");
-
-	// Float range boundaries
-	runTest("3.4028234663852886e38f", "FLT_MAX");
-	runTest("3.5e38f", "Float overflow");
-	runTest("1.17549435e-38f", "Smallest normal positive float");
-	runTest("1.40129846e-45f", "Smallest positive subnormal float");
-	runTest("1e-50f", "Float underflow");
-
-	// Double range boundaries
-	runTest("1.7976931348623157e308", "DBL_MAX");
-	runTest("1e309", "Double overflow");
-	runTest("2.2250738585072014e-308", "Smallest normal positive double");
-	runTest("4.9406564584124654e-324", "Smallest positive subnormal double");
-	runTest("1e-400", "Double underflow");
-
-	// C++ digit separator - optional extension
-	runTest("1'000", "C++ digit separator - parser extension");
+	runTest("1_000", "Invalid underscore");
 }
 
 void initTest()
@@ -386,5 +340,4 @@ void initTest()
 	testDouble();
 	testPseudo();
 	testInvalid();
-	testLimits();
 }

@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 11:11:16 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/10/29 01:00:55 by tutku            ###   ########.fr       */
+/*   Updated: 2026/10/30 02:19:19 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,14 @@ bool calcSharedValue(const std::string &literal, Converted &results)
 					results.pseudoSign = literal[0];
 				break;
 
-			default: // TODO: add cases for nan  etc.
+			default:
 				std::cerr << "Error: Invalid literal" << std::endl;
 				return false;
 		}
 	}
 	catch (const std::exception &e)
 	{
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cerr << "Error:  Conversion impossible. ->" << e.what() << std::endl;
 		return false;
 	}
 	return true;
@@ -85,7 +85,15 @@ void ScalarConverter::convert(const std::string &literal)
 	results.type = detectType(literal);
 
 	if (!calcSharedValue(literal, results))
+	{
+		results.charImpossible = true;
+		results.intImpossible = true;
+		results.floatImpossible = true;
+		results.doubleImpossible = true;
+
+		printMessage(results);
 		return;
+	}
 
 	convertChar(results);
 	convertInt(results);
