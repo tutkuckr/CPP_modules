@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 11:11:32 by tcakir-y          #+#    #+#             */
-/*   Updated: 2026/10/29 00:57:09 by tutku            ###   ########.fr       */
+/*   Updated: 2026/11/07 15:40:39 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,12 @@ struct Converted
 
 class ScalarConverter
 {
-	private:
-		// ========================CONSTRUCTORS============================
+		
+	public:
 		ScalarConverter() = delete;
 		ScalarConverter(const ScalarConverter &other) = delete;
 		ScalarConverter& operator=(const ScalarConverter& other) = delete;
 		~ScalarConverter() = delete;
-
-	public:
-		// ========================MEMBER FUNCTIONS========================
 		static void convert(const std::string& literal);
 };
 
