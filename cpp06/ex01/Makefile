@@ -6,7 +6,7 @@
 #    By: tutku <tutku@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/11/07 15:34:08 by tutku             #+#    #+#              #
-#    Updated: 2026/11/07 15:34:19 by tutku            ###   ########.fr        #
+#    Updated: 2026/11/07 17:53:17 by tutku            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,9 @@ SRC_DIR = src
 CPP_FLAGS = -I$(INC_DIR)
 
 # Source files
-SRC =	main.cpp
+SRC =	main.cpp\
+		Serializer.cpp\
+		Data.cpp
 
 # Convert source file name into object file path inside obj/
 OBJECTS = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
