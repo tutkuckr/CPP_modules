@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 05:12:38 by tutku             #+#    #+#             */
-/*   Updated: 2026/11/12 05:22:39 by tutku            ###   ########.fr       */
+/*   Updated: 2026/11/13 00:50:10 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ int main(void)
 	std::cout << "min( a, b ) = " << ::min(a, b) << std::endl;
 	std::cout << "max( a, b ) = " << ::max(a, b) << std::endl;
 
-	std::string c = "chaine1";
-	std::string d = "chaine2";
+	std::cout << std::endl;
+
+	std::string c = "str1";
+	std::string d = "str2";
 	
 	::swap(c, d);
 	std::cout << "c = " << c << ", d = " << d << std::endl;
