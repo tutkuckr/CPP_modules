@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tcakir-y <tcakir-y@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 00:55:22 by tutku             #+#    #+#             */
-/*   Updated: 2026/11/13 03:28:28 by tutku            ###   ########.fr       */
+/*   Updated: 2026/11/23 13:37:31 by tcakir-y         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ template <typename T> void increment(T& element)
 	element++;
 }
 
-template <typename T> void addEmoji(T& element)
+template <typename T> void addExclamation(T& element)
 {
 	element += "!";
 }
@@ -79,7 +79,7 @@ void testString()
 	std::cout << "\n\n";
 
 	std::cout << "Adding ! to every string..." << std::endl;
-	::iter(arr, arrLen, addEmoji);
+	::iter(arr, arrLen, addExclamation);
 	std::cout << "\n\n";
 
 	std::cout << "Expected: Hello! World! Codam!" << std::endl;
