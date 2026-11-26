@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/25 16:59:25 by tutku             #+#    #+#             */
-/*   Updated: 2026/11/26 02:04:38 by tutku            ###   ########.fr       */
+/*   Updated: 2026/11/26 03:09:38 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ class Span
 	private:
 		unsigned int _N;
 		std::vector<int> _v;
-		unsigned int _curVectorSize;
 
 	public:
 		Span();

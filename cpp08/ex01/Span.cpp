@@ -6,13 +6,13 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/25 16:59:52 by tutku             #+#    #+#             */
-/*   Updated: 2026/11/26 02:11:42 by tutku            ###   ########.fr       */
+/*   Updated: 2026/11/26 03:09:34 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-Span::Span() : _N(0), _curVectorSize(0)
+Span::Span() : _N(0)
 {
 }
 
@@ -28,12 +28,11 @@ Span &Span::operator=(const Span &other)
 	{
 		this->_N = other._N;
 		this->_v = other._v;
-		this->_curVectorSize = other._curVectorSize;
 	}
 	return (*this);
 }
 
-Span::Span(unsigned int N) : _N(N), _curVectorSize(0)
+Span::Span(unsigned int N) : _N(N)
 {
 	
 }
@@ -49,12 +48,11 @@ are already N elements stored should throw an exception.
 */
 void Span::addNumber(int number)
 {
-	if ((_curVectorSize > this->_v.size() || (this->_v.size() >= _N)))
+	if (this->_v.size() >= _N)
 	{
 		throw VectorAlreadyFull();
 	}
 	this->_v.push_back(number);
-	_curVectorSize++;
 }
 
 void Span::addNumber(std::vector<int>::iterator start, std::vector<int>::iterator end)
