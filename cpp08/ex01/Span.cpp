@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/25 16:59:52 by tutku             #+#    #+#             */
-/*   Updated: 2026/11/26 03:09:34 by tutku            ###   ########.fr       */
+/*   Updated: 2026/11/26 03:21:25 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,11 @@ int Span::longestSpan()
 	std::vector<int> sortedVector = this->_v;
 	sort(sortedVector.begin(), sortedVector.end());
 
+	long long checkOverflow =
+		static_cast<long long>(sortedVector.back()) - sortedVector.front();
+
+	if (checkOverflow > INT_MAX)
+		throw std::exception();
 	return (sortedVector.back() - sortedVector.front());
 }
 

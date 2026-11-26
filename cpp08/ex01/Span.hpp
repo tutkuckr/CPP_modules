@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/25 16:59:25 by tutku             #+#    #+#             */
-/*   Updated: 2026/11/26 03:09:38 by tutku            ###   ########.fr       */
+/*   Updated: 2026/11/26 03:23:24 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 #include <exception>
 #include <iostream>
-#include <algorithm> //to sort the vector, and get max, min
+#include <algorithm> //to sort the vector
+#include <climits>
 
 class Span
 {

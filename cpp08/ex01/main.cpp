@@ -6,7 +6,7 @@
 /*   By: tutku <tutku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/25 16:59:07 by tutku             #+#    #+#             */
-/*   Updated: 2026/11/26 02:42:41 by tutku            ###   ########.fr       */
+/*   Updated: 2026/11/26 03:22:22 by tutku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,25 @@ void testEmptySpan()
 	}
 }
 
+void testOverflow()
+{
+	std::cout << "\n===== OVERFLOW =====\n";
+	Span sp(2);
+
+	sp.addNumber(INT_MIN);
+	sp.addNumber(INT_MAX);
+
+	try
+	{
+		std::cout << sp.longestSpan() << std::endl;
+		check(false, "Overflow should throw an exception");
+	}
+	catch (const std::exception &e)
+	{
+		check(true, "Overflow exception thrown correctly");
+	}
+}
+
 int main()
 {
 	testSubjectExample();
@@ -186,6 +205,7 @@ int main()
 	testZeroCapacity();
 	testLargeSpan();
 	testEmptySpan();
+	testOverflow();
 
 	return 0;
 }
